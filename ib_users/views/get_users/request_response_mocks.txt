@@ -1,0 +1,48 @@
+
+
+REQUEST_BODY_JSON = """
+{
+    "search_q": "string", 
+    "user_ids": [
+        1
+    ], 
+    "exclude_user_ids": [
+        1
+    ], 
+    "limit": 1, 
+    "offset": 1
+}
+"""
+
+
+RESPONSE_200_JSON = """
+[
+    {
+        "is_staff": true, 
+        "first_name": "string", 
+        "m_id": 1, 
+        "extra_details": [
+            {
+                "ud_value": "string", 
+                "ud_key": "string"
+            }
+        ], 
+        "m_pic": "string", 
+        "dob": "2099-12-31 00:00:00", 
+        "m_country_code": "string", 
+        "m_username": "string", 
+        "is_active": true, 
+        "is_phone_verified": true, 
+        "m_pic_thumbnail": "string", 
+        "last_name": "string", 
+        "is_admin": true, 
+        "is_email_verified": true, 
+        "m_status": "string", 
+        "m_email": "string", 
+        "m_name": "string", 
+        "m_phone_number": "string", 
+        "m_gender": "string"
+    }
+]
+"""
+

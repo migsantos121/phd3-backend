@@ -1,0 +1,32 @@
+
+
+REQUEST_BODY_JSON = """
+{
+    "search_q": "string", 
+    "keyword_ids": [
+        1
+    ], 
+    "category_ids": [
+        1
+    ], 
+    "limit": 1, 
+    "offset": 1
+}
+"""
+
+
+RESPONSE_200_JSON = """
+[
+    {
+        "published_time": "string", 
+        "tags": "string", 
+        "url": "string", 
+        "title": "string", 
+        "image_name": "string", 
+        "author_name": "string", 
+        "summary": "string", 
+        "article_id": 1
+    }
+]
+"""
+

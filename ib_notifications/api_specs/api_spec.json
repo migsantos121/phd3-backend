@@ -1,0 +1,1126 @@
+{
+  "basePath": "/api/ib_notifications/",
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "security": [
+  ],
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://127.0.0.1:8000/api"
+  },
+  "host": "192.168.1.87:8003",
+  "info": {
+    "contact": {
+      "email": "tech@ibtspl.com"
+    },
+    "description": "This is a sample description",
+    "termsOfService": "http://ibtpsl.com",
+    "title": "Ib Service",
+    "version": "1.0.0"
+  },
+  "schemes": [
+    "http"
+  ],
+  "securityDefinitions": {
+    "oauth": {
+      "tokenUrl": "http://auth.ibtspl.com/oauth2/",
+      "flow": "password",
+      "scopes": {
+        "read": "read",
+        "write": "write"
+      },
+      "type": "oauth2"
+    }
+  },
+  "swagger": "2.0",
+  "tags": [
+    {
+      "description": "Operations about sending data in real time",
+      "externalDocs": {
+        "description": "Find out more about our store",
+        "url": "http://swagger.io"
+      },
+      "name": "real_time"
+    }
+  ],
+  "paths": {
+    "/send_real_time_data_api/v1/": {
+      "post": {
+        "description": "Send data to client in real time",
+        "operationId": "send_real_time_data_api",
+        "security": [
+          {
+            "oauth": [
+              "read",
+              "write"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/SendRealTimeDataRequestObject"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        },
+        "summary": "Send real time data",
+        "tags": [
+          "real_time"
+        ]
+      }
+    },
+    "/notifications/": {
+      "post": {
+        "operationId": "get_notifications",
+        "description": "get notifications",
+        "security": [
+          {
+            "oauth": [
+              "read",
+              "write"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "source": {
+                  "type": "string"
+                },
+                "offset": {
+                  "type": "integer",
+                  "default": 0
+                },
+                "limit": {
+                  "type": "integer",
+                  "default": 20
+                },
+                "notification_type": {
+                  "type": "string"
+                },
+                "sort_by_date": {
+                  "type": "string",
+                  "enum": [
+                    "ASC",
+                    "DESC"
+                  ]
+                }
+              },
+              "required": [
+                "offset",
+                "limit",
+                "source"
+              ]
+            }
+          }
+        ],
+        "tags": [
+          "notifications"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "total": {
+                  "type": "integer"
+                },
+                "notifications": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "notification_id": {
+                        "type": "integer"
+                      },
+                      "notification_type": {
+                        "type": "string"
+                      },
+                      "title": {
+                        "type": "string"
+                      },
+                      "message": {
+                        "type": "string"
+                      },
+                      "extra_data": {
+                        "type": "string"
+                      },
+                      "service": {
+                        "type": "string"
+                      },
+                      "members_details": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "user_id": {
+                              "type": "string"
+                            },
+                            "cm_token": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            },
+                            "read_status": {
+                              "type": "boolean"
+                            },
+                            "read_at": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      },
+                      "creation_datetime": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "notification_id",
+                      "title",
+                      "message",
+                      "cm_token",
+                      "members_details"
+                    ]
+                  }
+                }
+              },
+              "required": [
+                "total",
+                "notifications"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "/notifications/user_notifications/": {
+      "post": {
+        "summary": "get user_notifications",
+        "operationId": "get_user_notifications",
+        "security": [
+          {
+            "oauth": [
+              "read",
+              "write"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "source": {
+                  "type": "string"
+                },
+                "offset": {
+                  "type": "integer",
+                  "default": 0
+                },
+                "limit": {
+                  "type": "integer",
+                  "default": 20
+                },
+                "sort_by_date": {
+                  "type": "string",
+                  "enum": [
+                    "ASC",
+                    "DESC"
+                  ]
+                }
+              },
+              "required": [
+                "offset",
+                "limit",
+                "source"
+              ]
+            }
+          }
+        ],
+        "tags": [
+          "notifications"
+        ],
+        "responses": {
+          "200": {
+            "description": "200 Ok",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "total_count": {
+                  "type": "integer"
+                },
+                "unread_count": {
+                  "type": "integer"
+                },
+                "notifications": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "notification_id": {
+                        "type": "integer"
+                      },
+                      "notification_type": {
+                        "type": "string"
+                      },
+                      "title": {
+                        "type": "string"
+                      },
+                      "message": {
+                        "type": "string"
+                      },
+                      "extra_data": {
+                        "type": "string"
+                      },
+                      "read_status": {
+                        "type": "boolean"
+                      },
+                      "read_at": {
+                        "type": "string"
+                      },
+                      "creation_datetime": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/notifications/read/": {
+      "post": {
+        "operationId": "update_notification_status_as_read",
+        "description": "update notification",
+        "security": [
+          {
+            "oauth": [
+              "read",
+              "write"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "notification_id": {
+                  "type": "string"
+                },
+                "user_ids": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "required": [
+                "notification_id",
+                "user_ids"
+              ]
+            }
+          }
+        ],
+        "tags": [
+          "notifications"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/notifications/add_notification_choice/": {
+      "post": {
+        "security": [
+          {
+            "oauth": [
+              "write"
+            ]
+          }
+        ],
+        "description": "Add a notification choice.",
+        "operationId": "add_notification_choice",
+        "parameters": [
+          {
+            "$ref": "#/parameters/NotificationChoice"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 OK"
+          }
+        },
+        "summary": "Add Notification Choice",
+        "tags": [
+          "notification"
+        ]
+      }
+    },
+    "/notifications/update_user_notification_choice/": {
+      "post": {
+        "security": [
+          {
+            "oauth": [
+              "write"
+            ]
+          }
+        ],
+        "description": "Add a user choice.",
+        "operationId": "update_user_notification_choice",
+        "parameters": [
+          {
+            "$ref": "#/parameters/UserNotificationChoice"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 OK"
+          }
+        },
+        "summary": "Add User Notification Choice",
+        "tags": [
+          "notification"
+        ]
+      }
+    },
+    "/notifications/get_user_notification_choices/": {
+      "post": {
+        "security": [
+          {
+            "oauth": [
+              "write"
+            ]
+          }
+        ],
+        "description": "get user choices by notification_choice_id and user_id_list.",
+        "operationId": "get_user_notification_choices",
+        "parameters": [
+          {
+            "$ref": "#/parameters/UserChoicesRequest"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/responses/UserNotificationChoicesResponse"
+          }
+        },
+        "summary": "get_user_choices",
+        "tags": [
+          "notification"
+        ]
+      }
+    },
+    "/notifications/add_user_token/": {
+      "post": {
+        "security": [
+          {
+            "oauth": [
+              "write"
+            ]
+          }
+        ],
+        "description": "Add user authentication token.",
+        "operationId": "add_user_token",
+        "parameters": [
+          {
+            "$ref": "#/parameters/UserCMToken"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 OK"
+          }
+        },
+        "summary": "Add User CM Auth Token",
+        "tags": [
+          "notification"
+        ]
+      }
+    },
+    "/notifications/send_notification/": {
+      "post": {
+        "security": [
+          {
+            "oauth": [
+              "write"
+            ]
+          }
+        ],
+        "description": "send notification to user ids.",
+        "operationId": "send_notification",
+        "parameters": [
+          {
+            "$ref": "#/parameters/NotificationRequest"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User Notification Choices Response",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "notification_id": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        },
+        "summary": "send_notification",
+        "tags": [
+          "notification"
+        ]
+      }
+    },
+    "/notifications/send_group_notification/": {
+      "post": {
+        "security": [
+          {
+            "oauth": [
+              "write"
+            ]
+          }
+        ],
+        "description": "send notification to group.",
+        "operationId": "send_notification_to_group",
+        "parameters": [
+          {
+            "$ref": "#/parameters/GroupNotificationRequest"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User Notification Choices Response",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "notification_id": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        },
+        "summary": "send_group_notification",
+        "tags": [
+          "group"
+        ]
+      }
+    },
+    "/notifications/add_member_to_group/": {
+      "post": {
+        "security": [
+          {
+            "oauth": [
+              "write"
+            ]
+          }
+        ],
+        "description": "Add member to group",
+        "operationId": "add_member_to_group",
+        "parameters": [
+          {
+            "$ref": "#/parameters/GroupMemberRequest"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 OK"
+          }
+        },
+        "summary": "add_member_to_group",
+        "tags": [
+          "group"
+        ]
+      }
+    },
+    "/notifications/groups/": {
+      "post": {
+        "security": [
+          {
+            "oauth": [
+              "write"
+            ]
+          }
+        ],
+        "description": "get groups",
+        "operationId": "get_groups",
+        "parameters": [
+          {
+            "$ref": "#/parameters/Pagination"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/responses/Groups"
+          }
+        },
+        "summary": "get_groups",
+        "tags": [
+          "group"
+        ]
+      }
+    },
+    "/notifications/deactivate/": {
+      "post": {
+        "summary": "Deactivate user access tokens",
+        "operationId": "deactivate_user_cm_tokens_api",
+        "parameters": [
+          {
+            "$ref": "#/parameters/DeactivateUserCMTokensAPIRequest"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 OK"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "RealTimeDataObject": {
+      "description": "real time data object",
+      "type": "object",
+      "properties": {
+        "real_time_event": {
+          "type": "string"
+        },
+        "real_time_data": {
+          "type": "string"
+        }
+      }
+    },
+    "GeneralError": {
+      "type": "object",
+      "properties": {
+        "error_code": {
+          "type": "integer"
+        },
+        "error_remarks": {
+          "type": "string"
+        }
+      }
+    },
+    "ObjectId": {
+      "description": "This is object id",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "NotificationChoiceBody": {
+      "description": "This is notification choice body",
+      "type": "object",
+      "properties": {
+        "source": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "display_name": {
+          "type": "string"
+        },
+        "default_choice": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "source",
+        "name"
+      ]
+    },
+    "UserNotificationChoiceBody": {
+      "description": "This is user notification choice body",
+      "type": "object",
+      "properties": {
+        "source": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "display_name": {
+          "type": "string"
+        },
+        "preference": {
+          "type": "string",
+          "enum": [
+            "ON",
+            "OFF"
+          ]
+        }
+      },
+      "required": [
+        "source",
+        "name",
+        "preference"
+      ]
+    },
+    "UserCMTokenBody": {
+      "description": "This is user cloud messaging token body",
+      "type": "object",
+      "properties": {
+        "source": {
+          "type": "string"
+        },
+        "cm_type": {
+          "type": "string"
+        },
+        "cm_token": {
+          "type": "string"
+        },
+        "device_id": {
+          "type": "string"
+        },
+        "device_type": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "source",
+        "cm_type",
+        "cm_token"
+      ]
+    },
+    "UserNotificationChoice": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/ObjectId"
+        },
+        {
+          "$ref": "#/definitions/UserNotificationChoiceBody"
+        }
+      ]
+    },
+    "UserChoicesRequest": {
+      "description": "This is token request definition",
+      "type": "object",
+      "properties": {
+        "source": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "source"
+      ]
+    },
+    "NotificationRequest": {
+      "description": "This is token request definition",
+      "type": "object",
+      "properties": {
+        "source": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "user_ids": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
+        },
+        "cm_type": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "extra_data": {
+          "type": "string"
+        },
+        "log_notification": {
+          "type": "boolean"
+        },
+        "notification_type": {
+          "type": "string"
+        },
+        "device_types": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "push_notification_type": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "source",
+        "name",
+        "user_ids",
+        "cm_type",
+        "title",
+        "message"
+      ]
+    },
+    "Sorts": {
+      "type": "object",
+      "properties": {
+        "creation_datetime": {
+          "type": "string",
+          "enum": [
+            "ASC",
+            "DESC"
+          ]
+        }
+      }
+    },
+    "GroupRequest": {
+      "type": "object",
+      "properties": {
+        "group_name": {
+          "type": "string"
+        },
+        "group_type": {
+          "type": "string",
+          "enum": [
+            "GENERAL"
+          ]
+        },
+        "user_ids": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
+        },
+        "source": {
+          "type": "string"
+        },
+        "entity_id": {
+          "type": "integer"
+        },
+        "entity_type": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "source",
+        "group_type"
+      ]
+    },
+    "GroupId": {
+      "type": "object",
+      "properties": {
+        "group_id": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "group_id"
+      ]
+    },
+    "Group": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/GroupId"
+        },
+        {
+          "$ref": "#/definitions/GroupRequest"
+        }
+      ]
+    },
+    "GroupMemberRequest": {
+      "type": "object",
+      "properties": {
+        "user_ids": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
+        },
+        "entity_id": {
+          "type": "integer"
+        },
+        "entity_type": {
+          "type": "string"
+        },
+        "group_name": {
+          "type": "string"
+        },
+        "group_type": {
+          "type": "string",
+          "enum": [
+            "GENERAL"
+          ]
+        },
+        "source": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "source",
+        "user_ids",
+        "entity_id",
+        "entity_type"
+      ]
+    },
+    "GroupNotificationRequest": {
+      "description": "This is token request definition",
+      "type": "object",
+      "properties": {
+        "source": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "entity_id": {
+          "type": "integer"
+        },
+        "entity_type": {
+          "type": "string"
+        },
+        "cm_type": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "extra_data": {
+          "type": "string"
+        },
+        "log_notification": {
+          "type": "boolean"
+        },
+        "notification_type": {
+          "type": "string"
+        },
+        "push_notification_type":{
+          "type":"string",
+          "enum": [
+            "DATA",
+            "NOTIFICATION"
+          ]
+        }
+      },
+      "required": [
+        "source",
+        "name",
+        "entity_id",
+        "entity_type",
+        "cm_type",
+        "title",
+        "message"
+      ]
+    }
+
+  },
+  "parameters": {
+    "SendRealTimeDataRequestObject": {
+      "description": "real time data request object",
+      "in": "body",
+      "name": "SendRealTimeDataRequestObject",
+      "required": true,
+      "schema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/definitions/RealTimeDataObject"
+        }
+      }
+    },
+    "NotificationChoice": {
+      "description": "Notification Choice Parameter",
+      "in": "body",
+      "name": "notification_choice",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/NotificationChoiceBody"
+      }
+    },
+    "UserNotificationChoice": {
+      "description": "User Notification Choice Parameter",
+      "in": "body",
+      "name": "user_notification_choice",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/UserNotificationChoiceBody"
+      }
+    },
+    "UserCMToken": {
+      "description": "User Cloud Messaging Token Parameter",
+      "in": "body",
+      "name": "user_cm_token",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/UserCMTokenBody"
+      }
+    },
+    "UserChoicesRequest": {
+      "description": "User Choices Request Parameter",
+      "in": "body",
+      "name": "user_choices",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/UserChoicesRequest"
+      }
+    },
+    "NotificationRequest": {
+      "description": "Notification Request",
+      "in": "body",
+      "name": "notification_request",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/NotificationRequest"
+      }
+    },
+    "GroupNotificationRequest": {
+      "description": "Group Notification Request",
+      "in": "body",
+      "name": "group_notification_request",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/GroupNotificationRequest"
+      }
+    },
+    "GroupRequest": {
+      "description": "Group Request",
+      "in": "body",
+      "name": "group_request",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/GroupRequest"
+      }
+    },
+    "GroupMemberRequest": {
+      "description": "Group Member Request",
+      "in": "body",
+      "name": "group_member_request",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/GroupMemberRequest"
+      }
+    },
+    "Pagination": {
+      "description": "Pagination Request",
+      "in": "body",
+      "name": "pagination_request",
+      "required": true,
+      "schema": {
+        "type": "object",
+        "properties": {
+          "offset": {
+            "type": "integer"
+          },
+          "filter": {
+            "type": "integer"
+          },
+          "source": {
+            "type": "string"
+          },
+          "group_type": {
+            "type": "string",
+            "enum": [
+              "GENERAL"
+            ]
+          }
+        },
+        "required": [
+          "source"
+        ]
+      }
+    },
+    "DeactivateUserCMTokensAPIRequest": {
+      "name": "DeactivateUserCMTokensAPIRequest",
+      "description": "Request for deactivate_user_cm_tokens_api",
+      "in": "body",
+      "required": true,
+      "schema": {
+        "type": "object",
+        "properties": {
+          "user_id": {
+            "type": "integer"
+          },
+          "source": {
+            "type": "string"
+          },
+          "device_types": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "cm_token": {
+            "type": "string"
+          },
+          "device_id": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "responses": {
+    "GeneralError": {
+      "description": "General Error",
+      "schema": {
+        "$ref": "#/definitions/GeneralError"
+      }
+    },
+    "Groups": {
+      "description": "Groups",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "total": {
+            "type": "integer"
+          },
+          "groups": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/Group"
+            }
+          }
+        }
+      }
+    },
+    "UserNotificationChoicesResponse": {
+      "description": "User Notification Choices Response",
+      "schema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/definitions/UserNotificationChoiceBody"
+        }
+      }
+    }
+  }
+}
+    

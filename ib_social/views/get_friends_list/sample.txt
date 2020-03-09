@@ -1,0 +1,21 @@
+
+
+REQUEST_BODY_JSON = """
+{
+    "search_q": "string", 
+    "m_id": 1, 
+    "limit": 1, 
+    "m_type": "USER", 
+    "offset": 1
+}
+"""
+
+
+RESPONSE_200_JSON = """
+{"count": 1, "friends": [{"user_id": 1, "user_name": "string", "user_thumbnail": "string"}, {"user_id": 1, "user_name": "string", "user_thumbnail": "string"}]}
+"""
+
+RESPONSE_400_JSON = """
+{"error_code": 1, "error_remarks": "string"}
+"""
+

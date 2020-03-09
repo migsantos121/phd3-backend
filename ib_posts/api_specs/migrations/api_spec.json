@@ -1,0 +1,545 @@
+{
+  "basePath": "/api/ib_posts/",
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "security": [
+  ],
+  "schemes": [
+    "http"
+  ],
+  "securityDefinitions": {
+    "oauth": {
+      "tokenUrl": "http://auth.ibtspl.com/oauth2/",
+      "flow": "password",
+      "scopes": {
+        "read": "read users",
+        "write": "create users",
+        "update": "update users",
+        "delete": "delete users"
+      },
+      "type": "oauth2"
+    }
+  },
+  "swagger": "2.0",
+  "tags": [
+    {
+      "description": "Operations about user",
+      "externalDocs": {
+        "description": "Find out more about our store",
+        "url": "http://swagger.io"
+      },
+      "name": "user"
+    }
+  ],
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://127.0.0.1:8000/api"
+  },
+  "host": "127.0.0.1:8000",
+  "info": {
+    "contact": {
+      "email": "tech@ibtspl.com"
+    },
+    "description": "This is a sample description",
+    "termsOfService": "http://ibtpsl.com",
+    "title": "Ib Service",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/posts/{post_id}/": {
+      "parameters": [
+        {
+          "$ref": "#/parameters/PostId"
+        }
+      ],
+      "get": {
+        "security": [
+          {
+            "oauth": [
+              "read"
+            ]
+          }
+        ],
+        "summary": "get post",
+        "operationId": "get_post",
+        "responses": {
+          "200": {
+            "$ref": "#/responses/Post"
+          }
+        }
+      },
+      "post": {
+        "security": [
+          {
+            "oauth": [
+              "write"
+            ]
+          }
+        ],
+        "summary": "update post",
+        "operationId": "update_post",
+        "parameters": [
+          {
+            "$ref": "#/parameters/AddPostsRequest"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Update post by post id"
+          }
+        }
+      },
+      "delete": {
+        "security": [
+          {
+            "oauth": [
+              "write"
+            ]
+          }
+        ],
+        "summary": "delete post",
+        "operationId": "delete_post",
+        "responses": {
+          "200": {
+            "description": "delete post response"
+          }
+        }
+      }
+    },
+    "/posts/{post_id}/article/": {
+      "parameters": [
+        {
+          "$ref": "#/parameters/PostId"
+        }
+      ],
+      "get": {
+        "security": [
+          {
+            "oauth": [
+              "read"
+            ]
+          }
+        ],
+        "summary": "get post with article",
+        "operationId": "get_post_with_article",
+        "responses": {
+          "200": {
+            "$ref": "#/responses/Post"
+          }
+        }
+      }
+    },
+    "/posts/": {
+      "post": {
+        "security": [
+          {
+            "oauth": [
+              "read"
+            ]
+          }
+        ],
+        "summary": "get posts",
+        "operationId": "get_posts",
+        "parameters": [
+          {
+            "$ref": "#/parameters/PostsRequest"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/responses/PostsResponse"
+          }
+        }
+      }
+    },
+    "/user/posts/": {
+      "post": {
+        "security": [
+          {
+            "oauth": [
+              "read"
+            ]
+          }
+        ],
+        "summary": "get posts by user id",
+        "operationId": "get_posts_by_user_id",
+        "parameters": [
+          {
+            "$ref": "#/parameters/PostsRequest"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/responses/PostsResponse"
+          }
+        }
+      }
+    },
+    "/user/posts/stats/": {
+      "get": {
+        "security": [
+          {
+            "oauth": [
+              "read"
+            ]
+          }
+        ],
+        "summary": "get_post_user_stats",
+        "operationId": "get_post_user_stats",
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/PostStats"
+            },
+            "description": "get_post_user_stats"
+          }
+        }
+      }
+    },
+    "/posts/add_post/": {
+      "post": {
+        "security": [
+          {
+            "oauth": [
+              "write"
+            ]
+          }
+        ],
+        "summary": "add new post",
+        "operationId": "add_post",
+        "parameters": [
+          {
+            "$ref": "#/parameters/AddPostsRequest"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/responses/AddPostsResponse"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "GeneralError": {
+      "type": "object",
+      "properties": {
+        "error_code": {
+          "type": "integer"
+        },
+        "error_remarks": {
+          "type": "string"
+        }
+      }
+    },
+    "Post": {
+      "type": "object",
+      "properties": {
+        "post_id": {
+          "type": "integer"
+        },
+        "user_id": {
+          "type": "integer"
+        },
+        "article_id": {
+          "type": "integer"
+        },
+        "content": {
+          "type": "string"
+        },
+        "multimedia_url": {
+          "type": "string"
+        },
+        "multimedia_type": {
+          "type": "string",
+          "enum": [
+            "IMAGE",
+            "VIDEO",
+            "AUDIO"
+          ]
+        },
+        "creation_datetime": {
+          "type": "string"
+        },
+        "article_info": {
+          "$ref": "#/definitions/ArticleInfo"
+        }
+      }
+    },
+    "ArticleInfo": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "summary": {
+          "type": "string"
+        },
+        "author_name": {
+          "type": "string"
+        },
+        "published_time": {
+          "type": "string"
+        },
+        "tags": {
+          "type": "string"
+        },
+        "image": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "title",
+        "summary",
+        "published_time",
+        "author_name"
+      ]
+    },
+    "PostsRequest": {
+      "type": "object",
+      "properties": {
+        "offset": {
+          "type": "integer"
+        },
+        "limit": {
+          "type": "integer"
+        },
+        "search_q": {
+          "type": "string"
+        },
+        "filters": {
+          "$ref": "#/definitions/Filters"
+        }
+      }
+    },
+    "UserIds": {
+      "type": "object",
+      "description": "Event Schedule Request",
+      "properties": {
+        "user_ids": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
+        }
+      }
+    },
+    "Total": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "integer"
+        }
+      }
+    },
+    "MediaStat": {
+      "type": "object",
+      "properties": {
+        "media_type": {
+          "type": "string",
+          "enum": [
+            "IMAGE",
+            "VIDEO",
+            "AUDIO"
+          ]
+        },
+        "count": {
+          "type": "integer"
+        }
+      }
+    },
+    "MediaStats": {
+      "type": "object",
+      "properties": {
+        "posts_media_type": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MediaStat"
+          }
+        }
+      }
+    },
+    "PostStats": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/MediaStats"
+        },
+        {
+          "$ref": "#/definitions/Total"
+        }
+      ]
+    },
+    "IncludeArticleInfo": {
+      "type": "object",
+      "properties": {
+        "include_article_info": {
+          "type": "boolean"
+        }
+      }
+    },
+    "PostIds": {
+      "type": "object",
+      "properties": {
+        "post_ids": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
+        }
+      }
+    },
+    "MediaTypes": {
+      "type": "object",
+      "properties": {
+        "media_types": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "IMAGE",
+              "VIDEO",
+              "AUDIO"
+            ]
+          }
+        }
+      }
+    },
+    "Filters": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/Sorting"
+        },
+        {
+          "$ref": "#/definitions/UserIds"
+        },
+        {
+          "$ref": "#/definitions/IncludeArticleInfo"
+        },
+        {
+          "$ref": "#/definitions/PostIds"
+        },
+        {
+          "$ref": "#/definitions/MediaTypes"
+        }
+      ]
+    },
+    "Sorting": {
+      "type": "object",
+      "properties": {
+        "sorts": {
+          "$ref": "#/definitions/SortingFields"
+        }
+      }
+    },
+    "SortingFields": {
+      "type": "object",
+      "properties": {
+        "posted_date": {
+          "type": "string"
+        }
+      }
+    },
+    "AddPostRequest": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "string"
+        },
+        "article_id": {
+          "type": "integer"
+        },
+        "multimedia_type": {
+          "type": "string",
+          "enum": [
+            "IMAGE",
+            "VIDEO",
+            "AUDIO"
+          ]
+        },
+        "multimedia_url": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "content",
+        "article_id"
+      ]
+    },
+    "AddPostResponse": {
+      "type": "object",
+      "properties": {
+        "post_id": {
+          "type": "integer"
+        }
+      }
+    }
+  },
+  "parameters": {
+    "PostsRequest": {
+      "description": "post request",
+      "in": "body",
+      "name": "Posts_Requests",
+      "schema": {
+        "$ref": "#/definitions/PostsRequest"
+      }
+    },
+    "AddPostsRequest": {
+      "description": "add post request",
+      "in": "body",
+      "name": "Add_Posts_Requests",
+      "schema": {
+        "$ref": "#/definitions/AddPostRequest"
+      }
+    },
+    "PostId": {
+      "description": "post id",
+      "in": "path",
+      "name": "post_id",
+      "required": true,
+      "type": "integer"
+    },
+    "UserId": {
+      "description": "user id",
+      "in": "path",
+      "name": "user_id",
+      "required": true,
+      "type": "integer"
+    }
+  },
+  "responses": {
+    "GeneralError": {
+      "description": "General Error",
+      "schema": {
+        "$ref": "#/definitions/GeneralError"
+      }
+    },
+    "Post": {
+      "description": "Single Post",
+      "schema": {
+        "$ref": "#/definitions/Post"
+      }
+    },
+    "PostsResponse": {
+      "description": "Post List With Count",
+      "schema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/definitions/Post"
+        }
+      }
+    },
+    "AddPostsResponse": {
+      "description": "post id response",
+      "schema": {
+        "$ref": "#/definitions/AddPostResponse"
+      }
+    }
+  }
+}

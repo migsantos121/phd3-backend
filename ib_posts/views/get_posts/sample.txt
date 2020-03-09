@@ -1,0 +1,33 @@
+
+
+REQUEST_BODY_JSON = """
+{
+    "search_q": "string", 
+    "limit": 1, 
+    "filters": {
+        "post_ids": [
+            1, 
+            1
+        ], 
+        "sorts": {
+            "posted_date": "string"
+        }, 
+        "user_ids": [
+            1, 
+            1
+        ], 
+        "include_article_info": true, 
+        "media_types": [
+            "IMAGE", 
+            "IMAGE"
+        ]
+    }, 
+    "offset": 1
+}
+"""
+
+
+RESPONSE_200_JSON = """
+[{"creation_datetime": "string", "post_id": 1, "content": "string", "multimedia_url": "string", "article_info": {"published_time": "string", "title": "string", "url": "string", "image": "string", "tags": "string", "author_name": "string", "summary": "string"}, "user_id": 1, "multimedia_type": "IMAGE", "article_id": 1}, {"creation_datetime": "string", "post_id": 1, "content": "string", "multimedia_url": "string", "article_info": {"published_time": "string", "title": "string", "url": "string", "image": "string", "tags": "string", "author_name": "string", "summary": "string"}, "user_id": 1, "multimedia_type": "IMAGE", "article_id": 1}]
+"""
+

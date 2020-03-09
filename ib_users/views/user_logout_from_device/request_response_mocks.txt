@@ -1,0 +1,23 @@
+
+
+REQUEST_BODY_JSON = """
+{
+    "device_type": "string", 
+    "device_id": "string"
+}
+"""
+
+
+RESPONSE_200_JSON = """
+{
+    "success": true
+}
+"""
+
+RESPONSE_400_JSON = """
+{
+    "error_code": 1, 
+    "error_remarks": "string"
+}
+"""
+

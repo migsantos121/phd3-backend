@@ -1,0 +1,18 @@
+
+
+REQUEST_BODY_JSON = """
+{
+    "phone_number": "string", 
+    "auth_type": "string", 
+    "email": "string", 
+    "country_code": "string"
+}
+"""
+
+
+RESPONSE_200_JSON = """
+{
+    "success": true
+}
+"""
+

@@ -1,0 +1,21 @@
+
+
+REQUEST_BODY_JSON = """
+{
+    "r_m_id": 1, 
+    "limit": 1, 
+    "relation": "FRIEND", 
+    "r_m_type": "USER", 
+    "offset": 1
+}
+"""
+
+
+RESPONSE_200_JSON = """
+{"member_friends_count": 1, "total_relation_count": 1, "friends": [{"user_id": 1, "user_name": "string", "user_thumbnail": "string"}, {"user_id": 1, "user_name": "string", "user_thumbnail": "string"}], "has_relation": true}
+"""
+
+RESPONSE_400_JSON = """
+{"error_code": 1, "error_remarks": "string"}
+"""
+

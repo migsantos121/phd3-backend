@@ -1,0 +1,20 @@
+
+
+REQUEST_BODY_JSON = """
+{
+    "social_access_token_secret": "string", 
+    "social_provider": "facebook", 
+    "social_token": "string"
+}
+"""
+
+
+RESPONSE_200_JSON = """
+{
+    "user_id": 1, 
+    "social_id": "string", 
+    "social_provider": "facebook", 
+    "social_name": "string"
+}
+"""
+

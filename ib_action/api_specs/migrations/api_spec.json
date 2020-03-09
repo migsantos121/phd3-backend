@@ -1,0 +1,1193 @@
+{
+  "basePath": "/api/ib_action/",
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "security": [
+  ],
+  "definitions": {
+    "ActionResponse": {
+      "type": "object",
+      "properties": {
+        "like_summary": {
+          "type": "object",
+          "properties": {
+            "positive": {
+              "type": "integer"
+            },
+            "negative": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "positive",
+            "negative"
+          ]
+        },
+        "book_status_summary": {
+          "type": "object",
+          "properties": {
+            "read": {
+              "type": "integer"
+            },
+            "want_to_read": {
+              "type": "integer"
+            },
+            "started_reading": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "read",
+            "want_to_read",
+            "started_reading"
+          ]
+        },
+        "save_status_summary": {
+          "type": "object",
+          "properties": {
+            "saved": {
+              "type": "integer"
+            },
+            "completed": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "saved",
+            "completed"
+          ]
+        },
+        "subscribe_summary": {
+          "type": "object",
+          "properties": {
+            "positive": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "positive"
+          ]
+        },
+        "attend_summary": {
+          "type": "object",
+          "properties": {
+            "positive": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "positive"
+          ]
+        },
+        "rating_summary": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "r_value": {
+                "type": "integer"
+              },
+              "r_count": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "r_value",
+              "r_count"
+            ]
+          }
+        },
+        "vote_summary": {
+          "type": "object",
+          "properties": {
+            "positive": {
+              "type": "integer"
+            },
+            "negative": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "positive",
+            "negative"
+          ]
+        },
+        "favourite_summary": {
+          "type": "object",
+          "properties": {
+            "positive": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "positive"
+          ]
+        },
+        "love_summary": {
+          "type": "object",
+          "properties": {
+            "positive": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "positive"
+          ]
+        },
+        "bookmark_summary": {
+          "type": "object",
+          "properties": {
+            "positive": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "positive"
+          ]
+        },
+        "report_summary": {
+          "type": "object",
+          "properties": {
+            "positive": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "positive"
+          ]
+        },
+        "helpful_summary": {
+          "type": "object",
+          "properties": {
+            "positive": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "positive"
+          ]
+        },
+        "share_summary": {
+          "type": "object",
+          "properties": {
+            "positive": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "positive"
+          ]
+        },
+        "follow_summary": {
+          "type": "object",
+          "properties": {
+            "positive": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "positive"
+          ]
+        },
+        "user_actions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "action_type": {
+                "type": "string"
+              },
+              "action_value": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "action_type",
+              "action_value"
+            ]
+          }
+        }
+      },
+      "required": [
+        "user_actions"
+      ]
+    },
+    "UsersSummaryResponse": {
+      "type": "object",
+      "properties": {
+        "entity_id": {
+          "type": "integer"
+        },
+        "entity_type": {
+          "type": "string"
+        },
+        "like_summary": {
+          "type": "object",
+          "properties": {
+            "positive": {
+              "type": "integer"
+            },
+            "negative": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "positive",
+            "negative"
+          ]
+        },
+        "share_summary": {
+          "type": "object",
+          "properties": {
+            "positive": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "positive"
+          ]
+        },
+        "follow_summary": {
+          "type": "object",
+          "properties": {
+            "positive": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "positive"
+          ]
+        },
+        "subscribe_summary": {
+          "type": "object",
+          "properties": {
+            "positive": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "positive"
+          ]
+        },
+        "attend_summary": {
+          "type": "object",
+          "properties": {
+            "positive": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "positive"
+          ]
+        },
+        "rating_summary": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "r_value": {
+                "type": "integer"
+              },
+              "r_count": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "r_value",
+              "r_count"
+            ]
+          }
+        },
+        "vote_summary": {
+          "type": "object",
+          "properties": {
+            "positive": {
+              "type": "integer"
+            },
+            "negative": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "positive",
+            "negative"
+          ]
+        },
+        "favourite_summary": {
+          "type": "object",
+          "properties": {
+            "positive": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "positive"
+          ]
+        },
+        "love_summary": {
+          "type": "object",
+          "properties": {
+            "positive": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "positive"
+          ]
+        },
+        "book_status_summary": {
+          "type": "object",
+          "properties": {
+            "read": {
+              "type": "integer"
+            },
+            "want_to_read": {
+              "type": "integer"
+            },
+            "started_reading": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "read",
+            "want_to_read",
+            "started_reading"
+          ]
+        },
+        "save_status_summary": {
+          "type": "object",
+          "properties": {
+            "saved": {
+              "type": "integer"
+            },
+            "completed": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "saved",
+            "completed"
+          ]
+        },
+        "bookmark_summary": {
+          "type": "object",
+          "properties": {
+            "positive": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "positive"
+          ]
+        },
+        "report_summary": {
+          "type": "object",
+          "properties": {
+            "positive": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "positive"
+          ]
+        },
+        "helpful_summary": {
+          "type": "object",
+          "properties": {
+            "positive": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "positive"
+          ]
+        },
+        "users_actions_summaries": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "user_id": {
+                "type": "integer"
+              },
+              "user_actions": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "action_type": {
+                      "type": "string"
+                    },
+                    "action_value": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "action_type",
+                    "action_value"
+                  ]
+                }
+              }
+            },
+            "required": [
+              "user_id",
+              "user_actions"
+            ]
+          }
+        }
+      },
+      "required": [
+        "entity_id",
+        "entity_type"
+      ]
+    },
+    "Action": {
+      "type": "object",
+      "properties": {
+        "action_type": {
+          "type": "string"
+        },
+        "action_value": {
+          "type": "string"
+        },
+        "entity_id": {
+          "type": "integer"
+        },
+        "entity_type": {
+          "type": "string"
+        },
+        "source": {
+          "type": "string"
+        },
+        "user_id": {
+          "type": "integer"
+        }
+      }
+    }
+  },
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://127.0.0.1:8000/api"
+  },
+  "host": "192.168.1.87:8003",
+  "info": {
+    "contact": {
+      "email": "tech@ibtspl.com"
+    },
+    "description": "This is a sample description",
+    "termsOfService": "http://ibtpsl.com",
+    "title": "Ib Service",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/action/": {
+      "post": {
+        "operationId": "add_action",
+        "security": [
+          {
+            "oauth": [
+              "read",
+              "write"
+            ]
+          }
+        ],
+        "tags": [
+          "user"
+        ],
+        "parameters": [
+          {
+            "name": "request",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "entity_id": {
+                  "type": "integer"
+                },
+                "entity_type": {
+                  "type": "string"
+                },
+                "source": {
+                  "type": "string"
+                },
+                "action_type": {
+                  "type": "string",
+                  "enum": [
+                    "RATE",
+                    "LIKE",
+                    "VOTE",
+                    "FAVOURITE",
+                    "LOVE",
+                    "BOOK_STATUS",
+                    "SAVE_STATUS",
+                    "BOOK_PROGRESS",
+                    "BOOKMARK",
+                    "REPORT",
+                    "HELPFUL",
+                    "SUBSCRIBE",
+                    "ATTEND",
+                    "SHARE",
+                    "FOLLOW"
+                  ]
+                },
+                "action_value": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "entity_id",
+                "entity_type",
+                "source",
+                "action_type",
+                "action_value"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User profile response",
+            "schema": {
+              "$ref": "#/definitions/ActionResponse"
+            }
+          }
+        }
+      }
+    },
+    "/summary/": {
+      "post": {
+        "operationId": "get_actions_summary",
+        "security": [
+          {
+            "oauth": [
+              "read",
+              "write"
+            ]
+          }
+        ],
+        "tags": [
+          "user"
+        ],
+        "parameters": [
+          {
+            "name": "request",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "entity_id": {
+                  "type": "integer"
+                },
+                "entity_type": {
+                  "type": "string"
+                },
+                "action_types": {
+                  "description": " CHOICES = [ RATE, LIKE, VOTE, FAVOURITE, LOVE, BOOK_STATUS, SAVE_STATUS, BOOK_PROGRESS, BOOKMARK, REPORT, HELPFUL, FOLLOW, SUBSCRIBE, ATTEND, SHARE ]",
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "enum": [
+                      "RATE",
+                      "LIKE",
+                      "VOTE",
+                      "FAVOURITE",
+                      "LOVE",
+                      "BOOK_STATUS",
+                      "SAVE_STATUS",
+                      "BOOK_PROGRESS",
+                      "BOOKMARK",
+                      "REPORT",
+                      "HELPFUL",
+                      "SUBSCRIBE",
+                      "ATTEND",
+                      "SHARE",
+                      "FOLLOW"
+                    ]
+                  }
+                },
+                "source": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "entity_id",
+                "entity_type",
+                "action_types",
+                "source"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User profile response",
+            "schema": {
+              "$ref": "#/definitions/ActionResponse"
+            }
+          }
+        }
+      }
+    },
+    "/summary/users/": {
+      "post": {
+        "operationId": "get_users_actions_summary",
+        "security": [
+          {
+            "oauth": [
+              "read",
+              "write"
+            ]
+          }
+        ],
+        "tags": [
+          "user"
+        ],
+        "parameters": [
+          {
+            "name": "request",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "entities": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "entity_id": {
+                        "type": "integer"
+                      },
+                      "entity_type": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "action_types": {
+                  "description": " CHOICES = [ RATE, LIKE, VOTE, FAVOURITE, LOVE, BOOK_STATUS, SAVE_STATUS, BOOK_PROGRESS, BOOKMARK, REPORT, HELPFUL, FOLLOW, SUBSCRIBE, ATTEND, SHARE ]",
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "enum": [
+                      "RATE",
+                      "LIKE",
+                      "VOTE",
+                      "FAVOURITE",
+                      "LOVE",
+                      "BOOK_STATUS",
+                      "SAVE_STATUS",
+                      "BOOK_PROGRESS",
+                      "BOOKMARK",
+                      "REPORT",
+                      "HELPFUL",
+                      "SUBSCRIBE",
+                      "ATTEND",
+                      "SHARE",
+                      "FOLLOW"
+                    ]
+                  }
+                },
+                "source": {
+                  "type": "string"
+                },
+                "user_ids": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer"
+                  }
+                }
+              },
+              "required": [
+                "entities",
+                "action_types",
+                "source",
+                "user_ids"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User profile response",
+            "$ref": "#/responses/EntitiesResponse"
+          }
+        }
+      }
+    },
+    "/entities/": {
+      "post": {
+        "operationId": "get_entities",
+        "security": [
+          {
+            "oauth": [
+              "read",
+              "write"
+            ]
+          }
+        ],
+        "tags": [
+          "user"
+        ],
+        "parameters": [
+          {
+            "name": "request",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "source": {
+                  "type": "string"
+                },
+                "entity_type": {
+                  "type": "string"
+                },
+                "user_ids": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer"
+                  }
+                }
+              },
+              "required": [
+                "source",
+                "entity_type",
+                "user_ids"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User profile response",
+            "$ref": "#/responses/EntitiesResponse"
+          }
+        }
+      }
+    },
+    "/users/actions/entities/": {
+      "post": {
+        "operationId": "get_user_action_entities",
+        "security": [
+          {
+            "oauth": [
+              "read",
+              "write"
+            ]
+          }
+        ],
+        "tags": [
+          "user"
+        ],
+        "parameters": [
+          {
+            "name": "request",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "limit": {
+                  "type": "integer"
+                },
+                "offset": {
+                  "type": "integer"
+                },
+                "source": {
+                  "type": "string"
+                },
+                "entity_type": {
+                  "type": "string"
+                },
+                "action_type": {
+                  "type": "string",
+                  "enum": [
+                    "RATE",
+                    "LIKE",
+                    "VOTE",
+                    "FAVOURITE",
+                    "LOVE",
+                    "BOOK_STATUS",
+                    "SAVE_STATUS",
+                    "BOOKMARK",
+                    "REPORT",
+                    "HELPFUL",
+                    "SUBSCRIBE",
+                    "ATTEND",
+                    "SHARE",
+                    "FOLLOW"
+                  ]
+                }
+              },
+              "required": [
+                "source",
+                "entity_type",
+                "action_type",
+                "limit",
+                "offset"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User profile response",
+            "$ref": "#/responses/UserActionEntitiesResponse"
+          }
+        }
+      }
+    },
+    "/users/actions/entities/v2/": {
+      "post": {
+        "operationId": "get_user_actions_entities",
+        "security": [
+          {
+            "oauth": [
+              "read",
+              "write"
+            ]
+          }
+        ],
+        "tags": [
+          "user"
+        ],
+        "parameters": [
+          {
+            "name": "request",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "limit": {
+                  "type": "integer"
+                },
+                "offset": {
+                  "type": "integer"
+                },
+                "source": {
+                  "type": "string"
+                },
+                "entity_types": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "action_values": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "action_types": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "enum": [
+                      "RATE",
+                      "LIKE",
+                      "VOTE",
+                      "FAVOURITE",
+                      "LOVE",
+                      "BOOK_STATUS",
+                      "SAVE_STATUS",
+                      "BOOKMARK",
+                      "REPORT",
+                      "HELPFUL",
+                      "SUBSCRIBE",
+                      "ATTEND",
+                      "SHARE",
+                      "FOLLOW"
+                    ]
+                  }
+                }
+              },
+              "required": [
+                "source",
+                "entity_types",
+                "action_types",
+                "limit",
+                "offset"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User profile response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Action"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/actions/get_saved_items/": {
+      "post": {
+        "operationId": "get_saved_items",
+        "security": [
+          {
+            "oauth": [
+              "read",
+              "write"
+            ]
+          }
+        ],
+        "tags": [
+          "user"
+        ],
+        "parameters": [
+          {
+            "name": "request",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "filter_entity_types": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "entity_type": {
+                        "type": "string"
+                      },
+                      "offset": {
+                        "type": "integer"
+                      },
+                      "limit": {
+                        "type": "integer"
+                      }
+                    }
+                  }
+                },
+                "offset": {
+                  "type": "integer"
+                },
+                "limit": {
+                  "type": "integer"
+                },
+                "source": {
+                  "type": "string"
+                },
+                "action_type": {
+                  "type": "string",
+                  "enum": [
+                    "RATE",
+                    "LIKE",
+                    "VOTE",
+                    "FAVOURITE",
+                    "LOVE",
+                    "BOOK_STATUS",
+                    "SAVE_STATUS",
+                    "BOOKMARK",
+                    "REPORT",
+                    "HELPFUL",
+                    "SUBSCRIBE",
+                    "ATTEND",
+                    "SHARE",
+                    "FOLLOW"
+                  ]
+                }
+              },
+              "required": [
+                "source",
+                "filter_entity_types",
+                "action_type"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User profile response",
+            "$ref": "#/responses/UserSavedActionItemsResponse"
+          }
+        }
+      }
+    },
+    "/get_friends_actions/": {
+      "post": {
+        "operationId": "get_friends_actions",
+        "security": [
+          {
+            "oauth": [
+              "read",
+              "write"
+            ]
+          }
+        ],
+        "tags": [
+          "user"
+        ],
+        "parameters": [
+          {
+            "name": "request",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "entity_id": {
+                  "type": "integer"
+                },
+                "entity_type": {
+                  "type": "string"
+                },
+                "source": {
+                  "type": "string"
+                },
+                "user_id": {
+                  "type": "integer"
+                },
+                "action_type": {
+                  "type": "string"
+                },
+                "user_type": {
+                  "type": "string"
+                },
+                "limit": {
+                  "type": "integer"
+                },
+                "offset": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "entity_id",
+                "entity_type",
+                "source",
+                "user_id",
+                "action_type"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User profile response",
+            "$ref": "#/responses/FriendsActionsResponse"
+          }
+        }
+      }
+    }
+  },
+  "schemes": [
+    "http"
+  ],
+  "securityDefinitions": {
+    "oauth": {
+      "tokenUrl": "http://auth.ibtspl.com/oauth2/",
+      "flow": "password",
+      "scopes": {
+        "read": "read users",
+        "write": "create users",
+        "update": "update users",
+        "delete": "delete users",
+        "user": "user"
+      },
+      "type": "oauth2"
+    }
+  },
+  "swagger": "2.0",
+  "tags": [
+    {
+      "description": "Operations about user",
+      "externalDocs": {
+        "description": "Find out more about our store",
+        "url": "http://swagger.io"
+      },
+      "name": "user"
+    }
+  ],
+  "parameters": {
+  },
+  "responses": {
+    "EntitiesResponse": {
+      "description": "",
+      "schema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/definitions/UsersSummaryResponse"
+        }
+      }
+    },
+    "UserActionEntitiesResponse": {
+      "description": "",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "total": {
+            "type": "integer"
+          },
+          "actions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/Action"
+            }
+          }
+        }
+      }
+    },
+    "UserSavedActionItemsResponse": {
+      "description": "",
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "entity_id": {
+              "type": "integer"
+            },
+            "entity_type": {
+              "type": "string"
+            },
+            "action_type": {
+              "type": "string"
+            },
+            "action_value": {
+              "type": "string"
+            },
+            "user_id": {
+              "type": "integer"
+            }
+          }
+        }
+      }
+    },
+    "FriendsActionsResponse": {
+      "description": "Friends actions response",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "friends_actions": {
+            "type": "array",
+            "items": {
+          "type": "object",
+          "properties": {
+            "user_id": {
+              "type": "integer"
+            },
+            "user_name": {
+              "type": "string"
+            },
+            "user_thumbnail": {
+              "type": "string"
+            },
+            "action_value": {
+              "type": "string"
+            }
+          }
+        }
+          },
+          "count": {
+            "type": "integer"
+          }
+        }
+      }
+    }
+  }
+}

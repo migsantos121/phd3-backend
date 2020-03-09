@@ -1,0 +1,14 @@
+
+
+REQUEST_BODY_JSON = """
+{
+    "url": "string", 
+    "name": "string"
+}
+"""
+
+
+RESPONSE_200_JSON = """
+{"news_source_id": 1}
+"""
+

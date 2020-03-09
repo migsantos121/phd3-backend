@@ -1,0 +1,608 @@
+{
+  "basePath": "/api/ib_recommender/",
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "security": [
+ ],
+  "definitions": {
+    "ArticleId": {
+      "type": "object",
+      "properties": {
+        "article_id": {
+          "type": "integer"
+        }
+      }
+    },
+    "ArticleCluster": {
+      "type": "object",
+      "properties": {
+        "cluster_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ArticleId"
+          }
+        }
+      }
+    },
+    "Article": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/ArticleId"
+        },
+        {
+          "$ref": "#/definitions/ArticleCluster"
+        }
+      ]
+    },
+    "KeywordIds": {
+      "type": "object",
+      "properties": {
+        "keyword_ids": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
+        }
+      }
+    },
+    "KeywordId": {
+      "type": "object",
+      "properties": {
+        "keyword_id": {
+          "type": "integer"
+        }
+      }
+    },
+    "KeywordName": {
+      "type": "object",
+      "properties": {
+        "keyword": {
+          "type": "string"
+        }
+      }
+    },
+    "Keyword": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/KeywordId"
+        },
+        {
+          "$ref": "#/definitions/KeywordName"
+        }
+      ]
+    },
+    "CategoryId": {
+      "type": "object",
+      "properties": {
+        "category_id": {
+          "type": "integer"
+        }
+      }
+   },
+    "CategoryIds": {
+      "type": "object",
+      "properties": {
+        "category_ids": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
+        }
+      }
+    },
+    "CategoryName": {
+      "type": "object",
+      "properties": {
+        "category": {
+          "type": "string"
+        }
+      }
+    },
+    "Category": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/CategoryId"
+        },
+        {
+          "$ref": "#/definitions/CategoryName"
+        }
+      ]
+    },
+    "Keywords": {
+      "type": "object",
+      "properties": {
+        "keywords": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Keyword"
+          }
+        }
+      }
+    },
+    "UserCategories": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/Category"
+        },
+        {
+          "$ref": "#/definitions/Keywords"
+        }
+      ]
+    },
+    "SearchQ": {
+      "type": "object",
+      "properties": {
+        "search_q": {
+          "type": "string"
+        }
+      }
+    },
+    "OffsetLimit": {
+      "type": "object",
+      "properties": {
+        "offset": {
+          "type": "integer"
+        },
+        "limit": {
+          "type": "integer"
+        }
+      }
+    },
+    "Search": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/SearchQ"
+        },
+        {
+          "$ref": "#/definitions/OffsetLimit"
+        }
+
+      ]
+    },
+    "IsBlocked": {
+      "type": "object",
+      "properties": {
+        "is_blocked": {
+          "type": "boolean"
+        }
+      }
+    },
+    "ArticlesRequest": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/CategoryIds"
+        },
+        {
+          "$ref": "#/definitions/KeywordIds"
+        }
+
+      ]
+    }
+  },
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://127.0.0.1:8000/api"
+  },
+  "host": "127.0.0.1:8000",
+  "info": {
+    "contact": {
+      "email": "tech@ibtspl.com"
+    },
+    "description": "This is a sample description",
+    "termsOfService": "http://ibtpsl.com",
+    "title": "Ib Service",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/articles/": {
+      "post": {
+        "security": [
+          {
+            "oauth": [
+              "read"
+            ]
+          }
+        ],
+        "description": "get articles",
+        "operationId": "get_articles",
+        "parameters": [
+          {
+            "$ref": "#/parameters/ArticlesRequest"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Article"
+              }
+            }
+          }
+        },
+        "summary": "Create user",
+        "tags": [
+          "articles"
+        ]
+      }
+    },
+    "/keywords/search/":{
+      "post": {
+         "security": [
+          {
+            "oauth": [
+              "read"
+            ]
+          }
+        ],
+        "description": "search_user_keywords",
+        "operationId": "search_user_keywords",
+        "parameters": [
+          {
+            "description": "Body Parameter",
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Search"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Keyword"
+              }
+            }
+          }
+        },
+        "summary": "search_user_keywords",
+        "tags": [
+          "keywords"
+        ]
+      }
+    },
+    "/keywords/":{
+      "post": {
+         "security": [
+          {
+            "oauth": [
+              "read"
+            ]
+          }
+        ],
+        "description": "get_user_keywords",
+        "operationId": "get_user_keywords",
+        "parameters": [
+          {
+            "description": "Body Parameter",
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/IsBlocked"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Keyword"
+              }
+            }
+          }
+        },
+        "summary": "search_user_keywords",
+        "tags": [
+          "keywords"
+        ]
+      }
+    },
+    "/keywords/block/":{
+      "post": {
+         "security": [
+          {
+            "oauth": [
+              "read"
+            ]
+          }
+        ],
+        "description": "block_user_keywords",
+        "operationId": "block_user_keywords",
+        "parameters": [
+          {
+            "$ref": "#/parameters/KeywordIdsRequest"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success response"
+          }
+        },
+        "summary": "block_user_keywords",
+        "tags": [
+          "keywords"
+        ]
+      }
+    },
+    "/keywords/unblock/":{
+      "post": {
+         "security": [
+          {
+            "oauth": [
+              "read"
+            ]
+          }
+        ],
+        "description": "unblock_user_keywords",
+        "operationId": "unblock_user_keywords",
+        "parameters": [
+          {
+            "$ref": "#/parameters/KeywordIdsRequest"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success response"
+          }
+        },
+        "summary": "unblock_user_keywords",
+        "tags": [
+          "keywords"
+        ]
+      }
+    },
+    "/categories/": {
+      "get": {
+         "security": [
+          {
+            "oauth": [
+              "read"
+            ]
+          }
+        ],
+        "description": "get_user_categories",
+        "operationId": "get_user_categories",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "success response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/UserCategories"
+              }
+            }
+          }
+        },
+        "summary": "get_user_categories",
+        "tags": [
+          "categories"
+        ]
+      },
+      "post": {
+         "security": [
+          {
+            "oauth": [
+              "read"
+            ]
+          }
+        ],
+        "description": "add_user_categories",
+        "operationId": "add_user_categories",
+        "parameters": [
+          {
+            "description": "Body Parameter",
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CategoryName"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success response",
+            "schema": {
+              "$ref": "#/definitions/CategoryId"
+            }
+          }
+        },
+        "summary": "add_user_categories",
+        "tags": [
+          "categories"
+        ]
+      }
+    },
+    "/categories/{category_id}/keywords/remove/": {
+      "parameters": [
+        {
+          "$ref": "#/parameters/CategoryId"
+        }
+      ],
+      "post": {
+         "security": [
+          {
+            "oauth": [
+              "read"
+            ]
+          }
+        ],
+        "description": "remove_category_keywords",
+        "operationId": "remove_category_keywords",
+        "parameters": [
+          {
+            "$ref": "#/parameters/KeywordIdsRequest"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success response"
+          }
+        },
+        "summary": "remove_category_keywords",
+        "tags": [
+          "categories"
+        ]
+      }
+    },
+    "/categories/{category_id}/keywords/": {
+      "parameters": [
+        {
+          "$ref": "#/parameters/CategoryId"
+        }
+      ],
+      "post": {
+         "security": [
+          {
+            "oauth": [
+              "read"
+            ]
+          }
+        ],
+        "description": "add_category_keywords",
+        "operationId": "add_category_keywords",
+        "parameters": [
+          {
+            "$ref": "#/parameters/KeywordIdsRequest"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success response"
+          }
+        },
+        "summary": "add_category_keywords",
+        "tags": [
+          "categories"
+        ]
+      }
+    },
+    "/categories/{category_id}/": {
+      "parameters": [
+        {
+          "$ref": "#/parameters/CategoryId"
+        }
+      ],
+      "post": {
+        "security": [
+          {
+            "oauth": [
+              "read"
+            ]
+          }
+        ],
+        "description": "remove_user_category",
+        "operationId": "remove_user_category",
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "success response"
+          }
+        },
+        "summary": "remove_user_category",
+        "tags": [
+          "categories"
+        ]
+      },
+      "get": {
+        "security": [
+          {
+            "oauth": [
+              "read"
+            ]
+          }
+        ],
+        "description": "get_user_category",
+        "operationId": "get_user_category",
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "success response",
+            "schema": {
+              "$ref": "#/definitions/UserCategories"
+            }
+          }
+        },
+        "summary": "get_user_category",
+        "tags": [
+          "categories"
+        ]
+      }
+    }
+  },
+  "schemes": [
+    "http"
+  ],
+  "securityDefinitions": {
+    "oauth": {
+      "tokenUrl": "http://auth.ibtspl.com/oauth2/",
+      "flow": "password",
+      "scopes": {
+        "read": "read users",
+        "write": "create users",
+        "update": "update users",
+        "delete": "delete users"
+      },
+      "type": "oauth2"
+    }
+  },
+  "swagger": "2.0",
+  "tags": [
+    {
+      "description": "Operations about user",
+      "externalDocs": {
+        "description": "Find out more about our store",
+        "url": "http://swagger.io"
+      },
+      "name": "user"
+    }
+  ],
+  "parameters": {
+
+
+
+    "KeywordIdsRequest": {
+      "description": "User Parameter",
+      "in": "body",
+      "name": "body",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/KeywordIds"
+      }
+    },
+
+    "ArticlesRequest": {
+      "description": "User Parameter",
+      "in": "body",
+      "name": "body",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/ArticlesRequest"
+      }
+    },
+    "CategoryId": {
+      "description": "Parameter",
+      "in": "path",
+      "name": "category_id",
+      "required": true,
+      "type": "integer"
+    }
+  },
+  "responses": {
+  }
+}

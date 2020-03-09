@@ -1,0 +1,2227 @@
+{
+    "basePath": "/api/ib_users/",
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "security": [
+    ],
+    "host": "ib-users-backend-alpha.apigateway.in",
+    "info": {
+        "contact": {
+            "email": "tech@ibtspl.com"
+        },
+        "description": "All the APIs related the ib_users service can be found here",
+        "title": "IB Users Service",
+        "version": "1.0.0"
+    },
+    "schemes": [
+        "http"
+    ],
+    "securityDefinitions": {
+        "oauth": {
+            "tokenUrl": "http://auth.ibtspl.com/oauth2/",
+            "flow": "password",
+            "scopes": {
+                "read": "read users",
+                "write": "create users",
+                "update": "update users",
+                "delete": "delete users"
+            },
+            "type": "oauth2"
+        }
+    },
+    "swagger": "2.0",
+    "tags": [
+        {
+            "description": "Operations about user",
+            "externalDocs": {
+                "description": "Find out more about our store",
+                "url": "http://swagger.io"
+            },
+            "name": "user"
+        }
+    ],
+    "paths": {
+        "/user/update/": {
+            "post": {
+                "description": "This can be used to update user details",
+                "operationId": "update_user_details",
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/UpdateUserDetailsAPIRequest"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/responses/UpdateUserDetailsAPIResponse"
+                    }
+                },
+                "summary": "can be used to get tokens",
+                "tags": [
+                    "profile"
+                ],
+                "security": [
+                    {
+                        "oauth": [
+                            "read",
+                            "write"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/user/": {
+            "post": {
+                "description": "",
+                "operationId": "get_user",
+                "responses": {
+                    "200": {
+                        "$ref": "#/responses/CompleteUserDetail"
+                    }
+                },
+                "summary": "Get user by user name",
+                "tags": [
+                    "user_details"
+                ],
+                "security": [
+                    {
+                        "oauth": [
+                            "read",
+                            "write"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/user/minimal_details/": {
+            "post": {
+                "description": "",
+                "operationId": "get_user_minimal",
+                "responses": {
+                    "200": {
+                        "$ref": "#/responses/MinimalUserDetail"
+                    }
+                },
+                "summary": "Get minimal user by user name",
+                "tags": [
+                    "user_details"
+                ],
+                "security": [
+                    {
+                        "oauth": [
+                            "read",
+                            "write"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/users/minimal_details/": {
+            "post": {
+                "summary": "to get minimal details of IBUser model",
+                "operationId": "get_user_minimal_by_user_ids",
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/GetUserMinimalDetailByUserIds"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/responses/MinimalUserDetailListResponse"
+                    }
+                },
+                "tags": [
+                    "user_details"
+                ],
+                "security": [
+                    {
+                        "oauth": [
+                            "read",
+                            "write"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/users/usernames/": {
+            "post": {
+                "summary": "to get member details of IBUser model",
+                "operationId": "get_user_details_from_usernames",
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/GetMembersRequest"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/responses/UserDetailsWithExtraDataResponse"
+                    }
+                },
+                "tags": [
+                    "user_details"
+                ],
+                "security": [
+                    {
+                        "oauth": [
+                            "read",
+                            "write"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/users/": {
+            "post": {
+                "summary": "to get member details of IBUser model",
+                "operationId": "get_users",
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/GetMembersRequestByIdRequest"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/responses/UserDetailsWithExtraDataResponse"
+                    }
+                },
+                "tags": [
+                    "user_details"
+                ],
+                "security": [
+                    {
+                        "oauth": [
+                            "read",
+                            "write"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/user/language/": {
+            "post": {
+                "summary": "to get the language of user",
+                "operationId": "get_user_language_preference",
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/GetLanguageRequest"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/responses/GetLanguageResponse"
+                    }
+                },
+                "tags": [
+                    "language"
+                ]
+            }
+        },
+        "/user/access_credentials/pwd/update/": {
+            "post": {
+                "summary": "to check the user in group",
+                "operationId": "update_password",
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/UpdatePasswordRequest"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "oauth": [
+                            "write"
+                        ]
+                    }
+                ],
+                "tags": [
+                    "profile"
+                ]
+            }
+        },
+        "/user/register/v2/": {
+            "post": {
+                "summary": "Register User",
+                "operationId": "register_user_v2",
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/UserRegisterRequest"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/responses/UserRegisterResponse"
+                    },
+                    "400": {
+                        "$ref": "#/responses/GeneralError"
+                    }
+                },
+                "tags": [
+                    "auth"
+                ]
+            }
+        },
+        "/user/login/v2/": {
+            "post": {
+                "summary": "User Login",
+                "operationId": "login_user_v2",
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/UserLoginRequest"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/responses/GetTokensV2APIResponse"
+                    },
+                    "400": {
+                        "$ref": "#/responses/GeneralError"
+                    }
+                },
+                "tags": [
+                    "auth"
+                ]
+            }
+        },
+        "/user/reset_password/v2/": {
+            "post": {
+                "summary": "Reset user password",
+                "operationId": "reset_user_password_v2",
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/ResetUserPasswordRequest"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/responses/SuccessResponse"
+                    },
+                    "400": {
+                        "$ref": "#/responses/GeneralError"
+                    }
+                },
+                "tags": [
+                    "auth"
+                ]
+            }
+        },
+        "/user/recover_password/v2/": {
+            "post": {
+                "summary": "Recover user password",
+                "operationId": "recover_user_password_v2",
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/RecoverUserPasswordRequest"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/responses/SuccessResponse"
+                    },
+                    "400": {
+                        "$ref": "#/responses/GeneralError"
+                    }
+                },
+                "tags": [
+                    "auth"
+                ]
+            }
+        },
+        "/user/update_data/v2/": {
+            "post": {
+                "security": [
+                    {
+                        "oauth": [
+                            "write"
+                        ]
+                    }
+                ],
+                "summary": "Update user data",
+                "operationId": "update_user_details_with_verification",
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/UserDataUpdateRequest"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/responses/SuccessResponse"
+                    },
+                    "400": {
+                        "$ref": "#/responses/GeneralError"
+                    }
+                },
+                "tags": [
+                    "profile"
+                ]
+            }
+        },
+        "/user/verify_data_update/v2/": {
+            "post": {
+                "security": [
+                    {
+                        "oauth": [
+                            "write"
+                        ]
+                    }
+                ],
+                "summary": "Verify data update",
+                "operationId": "verify_data_update_v2",
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/VerifyUserDataUpdateRequestWithoutClient"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/responses/SuccessResponse"
+                    },
+                    "400": {
+                        "$ref": "#/responses/GeneralError"
+                    }
+                },
+                "tags": [
+                    "profile"
+                ]
+            }
+        },
+        "/user/verify_data_update_pre_login/v2/": {
+            "post": {
+                "summary": "Verify data update pre login",
+                "operationId": "verify_data_update_pre_login_v2",
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/VerifyUserDataUpdateRequest"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/responses/GetTokensV2APIResponse"
+                    },
+                    "400": {
+                        "$ref": "#/responses/GeneralError"
+                    }
+                },
+                "tags": [
+                    "profile"
+                ]
+            }
+        },
+        "/user/social_login/": {
+            "post": {
+                "summary": "User Social Login, social_provider in small letters, *facebook* for Facebook",
+                "operationId": "social_login",
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/SocialLoginRequest"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/responses/GetTokensV2APIResponse"
+                    },
+                    "400": {
+                        "$ref": "#/responses/GeneralError"
+                    }
+                },
+                "tags": [
+                    "social"
+                ]
+            }
+        },
+
+        "/user/twitter_request/": {
+            "post": {
+                "summary": "User Social Login, social_provider in small letters, *twitter* for Twitter",
+                "operationId": "twitter_request",
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/TwitterLoginRequest"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/responses/GetTokensV2APIResponse"
+                    },
+                    "400": {
+                        "$ref": "#/responses/GeneralError"
+                    }
+                },
+                "tags": [
+                    "social"
+                ]
+            }
+        },
+
+        "/user/twitter_response/": {
+            "post": {
+                "summary": "User twitter Login response",
+                "operationId": "twitter_response",
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/TwitterLoginResponse"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/responses/GetTokensV2APIResponse"
+                    },
+                    "400": {
+                        "$ref": "#/responses/GeneralError"
+                    }
+                },
+                "tags": [
+                    "social"
+                ]
+            }
+        },
+
+        "/user/activate_or_deactivate_account/": {
+            "post": {
+                "security": [
+                    {
+                        "oauth": [
+                            "write"
+                        ]
+                    }
+                ],
+                "summary": "activate or deactivate account",
+                "operationId": "activate_or_deactivate_account",
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/AccountActivationRequest"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/responses/SuccessResponse"
+                    },
+                    "400": {
+                        "$ref": "#/responses/GeneralError"
+                    }
+                },
+                "tags": [
+                    "auth"
+                ]
+            }
+        },
+        "/user/user_logout/": {
+            "get": {
+                "security": [
+                    {
+                        "oauth": [
+                            "write"
+                        ]
+                    }
+                ],
+                "parameters": [
+                ],
+                "summary": "Logout user",
+                "operationId": "user_logout",
+                "responses": {
+                    "200": {
+                        "$ref": "#/responses/SuccessResponse"
+                    },
+                    "400": {
+                        "$ref": "#/responses/GeneralError"
+                    }
+                },
+                "tags": [
+                    "auth"
+                ]
+            },
+            "post": {
+                "security": [
+                    {
+                        "oauth": [
+                            "write"
+                        ]
+                    }
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/UserLogoutRequest"
+                    }
+                ],
+                "summary": "Logout user",
+                "operationId": "user_logout_from_device",
+                "responses": {
+                    "200": {
+                        "$ref": "#/responses/SuccessResponse"
+                    },
+                    "400": {
+                        "$ref": "#/responses/GeneralError"
+                    }
+                },
+                "tags": [
+                    "auth"
+                ]
+            }
+        },
+        "/user/access_credentials/set_password/": {
+            "post": {
+                "security": [
+                    {
+                        "oauth": [
+                            "write"
+                        ]
+                    }
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/SetPasswordRequest"
+                    }
+                ],
+                "summary": "Set user password",
+                "operationId": "set_password",
+                "responses": {
+                    "200": {
+                        "description": "200 ok"
+                    }
+                },
+                "tags": [
+                    "auth"
+                ]
+            }
+        },
+        "/user/access_credentials/otp/resend/v2/": {
+            "post": {
+                "summary": "to check the user in group",
+                "operationId": "resend_otp_v2",
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/ResendOTPRequest"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/responses/RegisterUserResponse"
+                    }
+                },
+                "tags": [
+                    "auth"
+                ]
+            }
+        },
+        "/user/get_supported_languages/": {
+            "post": {
+                "security": [
+                    {
+                        "oauth": [
+                            "read"
+                        ]
+                    }
+                ],
+                "summary": "get user supported languages added description",
+                "operationId": "get_user_supported_languages_api",
+                "parameters": [
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/responses/GetSupportedLanguagesAPIResponse"
+                    }
+                },
+                "tags": [
+                    "language"
+                ]
+            }
+        },
+        "/user/set_language/": {
+            "post": {
+                "security": [
+                    {
+                        "oauth": [
+                            "write"
+                        ]
+                    }
+                ],
+                "summary": "set user language",
+                "operationId": "set_user_language",
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/LanguageRequest"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/responses/SuccessResponse"
+                    }
+                },
+                "tags": [
+                    "language"
+                ]
+            }
+        },
+        "/user/get_social_details/": {
+            "post": {
+                "security": [
+                    {
+                        "oauth": [
+                            "write"
+                        ]
+                    }
+                ],
+                "summary": "get social details by user ids",
+                "operationId": "get_social_details",
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/SocialTokenRequest"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/responses/SocialUsers"
+                    }
+                },
+                "tags": [
+                    "social"
+                ]
+            }
+        },
+        "/user/link_social_account/": {
+            "post": {
+                "security": [
+                    {
+                        "oauth": [
+                            "write"
+                        ]
+                    }
+                ],
+                "summary": "link_user_social_account, social_provider in small letters, *facebook* for Facebook",
+                "operationId": "link_user_social_account",
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/SocialAccountLinkRequest"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/responses/SocialUser"
+                    }
+                },
+                "tags": [
+                    "social"
+                ]
+            }
+        },
+        "/user/get_user_by_auth_type/": {
+            "post": {
+                "security": [
+                    {
+                        "oauth": [
+                            "read"
+                        ]
+                    }
+                ],
+                "summary": "get_user_by_auth_type",
+                "operationId": "get_user_by_auth_type",
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/UserByAuthDetail"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/responses/MinimalUserDetail"
+                    }
+                }
+            }
+        },
+        "/user/availability/username/": {
+            "post": {
+                "summary": "check username availability",
+                "operationId": "check_username_availability",
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/UsernameAvailability"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/responses/UsernameAvailability"
+                    }
+                }
+            }
+        },
+        "/user/delink_social_account/": {
+            "post": {
+                "security": [
+                    {
+                        "oauth": [
+                            "write"
+                        ]
+                    }
+                ],
+                "summary": "delink_user_social_account, social_provider in small letters, *facebook* for Facebook",
+                "operationId": "delink_user_social_account",
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/SocialAccountDelinkRequest"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/responses/SocialUser"
+                    }
+                },
+                "tags": [
+                    "social"
+                ]
+            }
+        },
+        "/user/search_by_auth_type/": {
+            "post": {
+                "summary": "search for user by auth type",
+                "operationId": "search_user_by_auth_type",
+                "security": [
+                    {
+                        "oauth": [
+                            "read"
+                        ]
+                    }
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/SearchByAuthTypeRequest"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/responses/UserDetailsWithExtraDataResponse"
+                    }
+                },
+                "tags": [
+                    "user_details"
+                ]
+            }
+        },
+        "/user/login/otp/v2/": {
+            "post": {
+                "summary": "user login with otp and auth type",
+                "operationId": "user_login_v2_with_otp",
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/UserLoginV2WithOtpParameter"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/responses/SuccessResponse"
+                    }
+                },
+                "tags": [
+                    "login_v2"
+                ]
+            }
+        },
+        "/user/login/otp/resend/v2/": {
+            "post": {
+                "summary": "user login with otp and auth type",
+                "operationId": "resend_otp_v2_for_verified_auth",
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/ResendOTPV2ForVerifiedAuthParameter"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/responses/SuccessResponse"
+                    }
+                },
+                "tags": [
+                    "login_v2"
+                ]
+            }
+        },
+        "/user/login/otp/verify/v2/": {
+            "post": {
+                "summary": "user login verify otp resend with auth type",
+                "operationId": "user_login_v2_verify_otp",
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/UserLoginV2VerifyOtpParameter"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/responses/GetTokensV2APIResponse"
+                    }
+                },
+                "tags": [
+                    "login_v2"
+                ]
+            }
+        },
+        "/user/auth/update/otp/resend/v2/": {
+            "post": {
+                "summary": "resend otp for data verification",
+                "operationId": "resend_otp_v2_for_data_verification",
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/ResendOTPV2ForDataVerificationParameter"
+                    }
+                ],
+                "security": [
+                    {
+                        "oauth": [
+                            "read"
+                        ]
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/responses/SuccessResponse"
+                    }
+                },
+                "tags": [
+                    "login_v2"
+                ]
+            }
+        }
+    },
+    "parameters": {
+        "UserLoginV2WithOtpParameter": {
+            "description": "user login with otp and auth type",
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/definitions/PhoneNumberEmail"
+                  },
+                  {
+                    "$ref": "#/definitions/AuthType"
+                  }
+                ]
+            }
+        },
+        "ResendOTPV2ForVerifiedAuthParameter": {
+            "description": "user login with otp and auth type",
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/definitions/PhoneNumberEmail"
+                  },
+                  {
+                    "$ref": "#/definitions/AuthType"
+                  }
+                ]
+            }
+        },
+        "ResendOTPV2ForDataVerificationParameter": {
+            "description": "user login with otp and auth type",
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/definitions/PhoneNumberEmail"
+                  },
+                  {
+                    "$ref": "#/definitions/AuthType"
+                  }
+                ]
+            }
+        },
+        "UserLoginV2VerifyOtpParameter": {
+            "description": "user login with otp and auth type",
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/definitions/PhoneNumberEmail"
+                  },
+                  {
+                    "$ref": "#/definitions/AuthType"
+                  },
+                  {
+                    "$ref": "#/definitions/ClientDetails"
+                  },
+                  {
+                    "$ref": "#/definitions/VerifyToken"
+                  }
+                ]
+            }
+        },
+        "UpdateUserDetailsAPIRequest": {
+            "description": "Update user details parameter",
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+                "$ref": "#/definitions/UpdateUserDetailsAPIRequestDefinition"
+            }
+        },
+        "GetMembersRequestByIdRequest": {
+            "description": "get members from IBUser by id",
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+                "$ref": "#/definitions/GetMembersRequestByIdRequestDefinition"
+            }
+        },
+        "GetUserMinimalDetailByUserIds": {
+            "description": "get minimal members from IBUser by id",
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "user_ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer"
+                        }
+                    }
+                },
+                "required": [
+                    "user_ids"
+                ]
+            }
+        },
+        "GetMembersRequest": {
+            "description": "get members from IBUser",
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+                "$ref": "#/definitions/GetMembersRequestDefinition"
+            }
+        },
+        "GetLanguageRequest": {
+            "description": "get language of user",
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+                "$ref": "#/definitions/GetLanguageRequestDefinition"
+            }
+        },
+        "UpdatePasswordRequest": {
+            "description": "validate username",
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+                "$ref": "#/definitions/UpdatePasswordRequestDefinition"
+            }
+        },
+        "UserRegisterRequest": {
+            "description": "user register request",
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+                "$ref": "#/definitions/UserRegisterRequestDefinition"
+            }
+        },
+        "UserLoginRequest": {
+            "description": "user login request",
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+                "$ref": "#/definitions/UserLoginRequestDefinition"
+            }
+        },
+        "ResetUserPasswordRequest": {
+            "description": "reset user password request",
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+                "$ref": "#/definitions/ResetUserPasswordRequestDefitniion"
+            }
+        },
+        "RecoverUserPasswordRequest": {
+            "description": "recover user password request",
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+                "$ref": "#/definitions/RecoverUserPasswordRequestDefinition"
+            }
+        },
+        "UserDataUpdateRequest": {
+            "description": "user data update request",
+            "in": "body",
+            "name": "UserDataUpdateRequest",
+            "required": true,
+            "schema": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/UserDataUpdateRequestDefinition"
+                }
+            }
+        },
+        "VerifyUserDataUpdateRequest": {
+            "description": "verify user data update request",
+            "in": "body",
+            "name": "VerifyUserDataUpdateRequest",
+            "required": true,
+            "schema": {
+                "$ref": "#/definitions/VerifyUserDataUpdateRequestDefinition"
+            }
+        },
+        "VerifyUserDataUpdateRequestWithoutClient": {
+            "description": "verify user data update request",
+            "in": "body",
+            "name": "VerifyUserDataUpdateRequestWithoutClient",
+            "required": true,
+            "schema": {
+                "$ref": "#/definitions/VerifyUserDataUpdateRequestWithoutClient"
+            }
+        },
+        "SocialLoginRequest": {
+            "description": "social login parameter",
+            "in": "body",
+            "name": "SocialLoginRequest",
+            "required": true,
+            "schema": {
+                "$ref": "#/definitions/SocialLoginRequestDefinition"
+            }
+        },
+        "TwitterLoginRequest": {
+            "description": "social login parameter",
+            "in": "body",
+            "name": "TwitterLoginRequest",
+            "required": true,
+            "schema": {
+                "$ref": "#/definitions/SocialLoginRequestDefinition"
+            }
+        },
+        "TwitterLoginResponse": {
+            "description": "social login parameter",
+            "in": "body",
+            "name": "TwitterLoginResponse",
+            "required": true,
+            "schema": {
+                "$ref": "#/definitions/SocialLoginRequestDefinition"
+            }
+        },
+
+        "AccountActivationRequest": {
+            "description": "activate or deactivate account",
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+                "$ref": "#/definitions/AccountActivationRequestDefinition"
+            }
+        },
+        "SetPasswordRequest": {
+            "description": "set password request",
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+                "$ref": "#/definitions/SetPasswordRequestDefinition"
+            }
+        },
+        "ResendOTPRequest": {
+            "description": "validate username",
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+                "$ref": "#/definitions/ResendOTPRequestDefinition"
+            }
+        },
+        "LanguageRequest": {
+            "description": "change user language",
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+                "$ref": "#/definitions/Language"
+            }
+        },
+        "SocialTokenRequest": {
+            "description": "get social user details",
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+                "$ref": "#/definitions/SocialTokenRequestDefinition"
+            }
+        },
+        "SocialAccountLinkRequest": {
+            "description": "link social user account, social_provider in small letters, *facebook* for Facebook",
+            "in": "body",
+            "name": "social_user_link_request",
+            "required": true,
+            "schema": {
+                "$ref": "#/definitions/SocialUserRequest"
+            }
+        },
+        "SocialAccountDelinkRequest": {
+            "description": "delink social user account, social_provider in small letters, *facebook* for Facebook",
+            "in": "body",
+            "name": "social_user_link_request",
+            "required": true,
+            "schema": {
+                "$ref": "#/definitions/SocialProvider"
+            }
+        },
+        "UserByAuthDetail": {
+            "description": "user by auth detail",
+            "in": "body",
+            "name": "user_by_auth_detail",
+            "required": true,
+            "schema": {
+                "$ref": "#/definitions/UserByAuthDetail"
+            }
+        },
+        "UsernameAvailability": {
+            "description": "user name availability",
+            "in": "body",
+            "name": "username_availability",
+            "required": true,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "username": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "UserLogoutRequest": {
+            "description": "user logout request",
+            "in": "body",
+            "name": "user_logout_request",
+            "schema": {
+                "$ref": "#/definitions/DeviceInformationDefinition"
+            }
+        },
+      "SearchByAuthTypeRequest": {
+            "description": "search user by auth type request",
+            "in": "body",
+            "name": "search_by_auth_type_request",
+            "schema": {
+                "$ref": "#/definitions/SearchUserByAuthType"
+            }
+      }
+    },
+    "responses": {
+        "UpdateUserDetailsAPIResponse": {
+            "description": "OK",
+            "schema": {
+                "$ref": "#/definitions/UpdateUserDetailsAPIResponseDefinition"
+            }
+        },
+        "CompleteUserDetail": {
+            "description": "Detail of user containing m_types, ud_types, and social tokens",
+            "schema": {
+                "$ref": "#/definitions/CompleteUserDetailDefinition"
+            }
+        },
+        "MinimalUserDetail": {
+            "description": "Detail of user containing username, name, pic, thumbnail",
+            "schema": {
+                "$ref": "#/definitions/MinimalMemberDetailDefinition"
+            }
+        },
+        "MinimalUserDetailListResponse": {
+            "description": "response to get member details with extra data",
+            "schema": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/MinimalMemberDetailDefinition"
+                }
+            }
+        },
+        "UserDetailsWithExtraDataResponse": {
+            "description": "response to get member details with extra data",
+            "schema": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/UserDetailWithExtraData"
+                }
+            }
+        },
+        "GetLanguageResponse": {
+            "description": "response to get language of member",
+            "schema": {
+                "$ref": "#/definitions/GetLanguageResponseDefinition"
+            }
+        },
+        "UserRegisterResponse": {
+            "description": "User Register Response",
+            "schema": {
+                "$ref": "#/definitions/UserRegisterResponseDefinition"
+            }
+        },
+        "GetTokensV2APIResponse": {
+            "description": "get tokens response",
+            "schema": {
+                "$ref": "#/definitions/GetTokensV2APIResponseDefinition"
+            }
+        },
+        "SuccessResponse": {
+            "description": "success response",
+            "schema": {
+                "$ref": "#/definitions/SuccessResponseDefinition"
+            }
+        },
+        "GeneralError": {
+            "description": "General Error",
+            "schema": {
+                "$ref": "#/definitions/GeneralError"
+            }
+        },
+        "RegisterUserResponse": {
+            "description": "response to register user",
+            "schema": {
+                "$ref": "#/definitions/UserRegisterResponseDefinition"
+            }
+        },
+        "SocialUsers": {
+            "description": "Social network details of user",
+            "schema": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/SocialUserResponse"
+                }
+            }
+        },
+        "SocialUser": {
+            "description": "Social network details of user",
+            "schema": {
+                "$ref": "#/definitions/SocialUserResponse"
+            }
+        },
+        "UsernameAvailability": {
+            "description": "success response",
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "res_status": {
+                        "type": "string",
+                        "enum": [
+                            "AVAILABLE",
+                            "NOT_AVAILABLE"
+                        ]
+                    }
+                }
+            }
+        },
+        "GetSupportedLanguagesAPIResponse": {
+            "description": "Response for get_user_supported_languages_api",
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "languages": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "UserDetail": {
+            "description": "This is the description for user details to be updated",
+            "properties": {
+                "ud_key": {
+                    "type": "string"
+                },
+                "ud_value": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "ud_key"
+            ]
+        },
+        "UserDetails": {
+            "type": "object",
+            "properties": {
+                "user_details": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/UserDetail"
+                    }
+                }
+            }
+        },
+        "Source": {
+            "type": "object",
+            "properties": {
+                "source": {
+                    "type": "string"
+                }
+            }
+        },
+        "DOB": {
+            "type": "object",
+            "properties": {
+                "dob": {
+                    "type": "string",
+                    "format": "date-time"
+                }
+            }
+        },
+        "Language": {
+            "type": "object",
+            "properties": {
+                "language": {
+                    "type": "string"
+                }
+            }
+        },
+        "MemberId": {
+            "type": "object",
+            "properties": {
+                "member_id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "ResStatus": {
+            "type": "object",
+            "properties": {
+                "res_status": {
+                    "type": "string"
+                }
+            }
+        },
+        "UserId": {
+            "type": "object",
+            "properties": {
+                "user_id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "MId": {
+            "type": "object",
+            "properties": {
+                "m_id": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            }
+        },
+        "Password": {
+            "type": "object",
+            "properties": {
+                "password": {
+                    "type": "string"
+                }
+            }
+        },
+        "Name": {
+            "type": "object",
+            "properties": {
+                "first_name": {
+                    "type": "string"
+                },
+                "last_name": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "Username": {
+            "type": "object",
+            "properties": {
+                "username": {
+                    "type": "string"
+                }
+            }
+        },
+        "CountryCode": {
+            "type": "object",
+            "properties": {
+                "country_code": {
+                    "type": "string"
+                }
+            }
+        },
+        "MemberBriefDetails": {
+            "type": "object",
+            "properties": {
+                "m_username": {
+                    "type": "string"
+                },
+                "m_name": {
+                    "type": "string"
+                },
+                "m_pic": {
+                    "type": "string"
+                }
+            }
+        },
+        "DeviceId": {
+            "type": "object",
+            "properties": {
+                "device_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "DeviceType": {
+            "type": "object",
+            "properties": {
+                "device_type": {
+                    "type": "string"
+                }
+            }
+        },
+        "MemberDetails": {
+            "allOf": [
+                {
+                    "$ref": "#/definitions/MemberBriefDetails"
+                },
+                {
+                    "$ref": "#/definitions/DOB"
+                },
+                {
+                    "$ref": "#/definitions/MId"
+                }
+            ]
+        },
+        "MemberDetailsWithStatus": {
+            "allOf": [
+                {
+                    "$ref": "#/definitions/MemberDetails"
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "m_status": {
+                            "type": "string"
+                        }
+                    }
+                }
+            ]
+        },
+        "MemberExtraDetails": {
+            "type": "object",
+            "properties": {
+                "is_admin": {
+                    "type": "boolean"
+                },
+                "is_active": {
+                    "type": "boolean"
+                },
+                "m_pic_thumbnail": {
+                    "type": "string"
+                },
+                "m_gender": {
+                    "type": "string"
+                },
+                "m_email": {
+                    "type": "string"
+                },
+                "m_phone_number": {
+                    "type": "string"
+                },
+                "m_country_code": {
+                    "type": "string"
+                }
+            }
+        },
+        "AddMemberDetailsResponse": {
+            "allOf": [
+                {
+                    "$ref": "#/definitions/MemberDetailsWithStatus"
+                },
+                {
+                    "$ref": "#/definitions/MemberExtraDetails"
+                }
+            ]
+        },
+        "UserDetailWithExtraData": {
+            "allOf": [
+                {
+                    "$ref": "#/definitions/AddMemberDetailsResponse"
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "extra_details": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/UserDetail"
+                            }
+                        }
+                    }
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "first_name": {
+                            "type": "string"
+                        },
+                        "last_name": {
+                            "type": "string"
+                        },
+                        "is_email_verified": {
+                            "type": "boolean"
+                        },
+                        "is_phone_verified": {
+                            "type": "boolean"
+                        },
+                        "is_staff": {
+                            "type": "boolean"
+                        }
+                    }
+                }
+            ]
+        },
+        "CommonRegistrationDetails": {
+            "type": "object",
+            "properties": {
+                "phone_number": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                }
+            }
+        },
+        "UserRegistrationDetails": {
+            "type": "object",
+            "properties": {
+                "reg_type": {
+                    "type": "string"
+                },
+                "gender": {
+                    "type": "string"
+                },
+                "pic": {
+                    "type": "string"
+                },
+                "pic_thumbnail": {
+                    "type": "string"
+                },
+                "registration_source": {
+                    "type": "string"
+                }
+            }
+        },
+        "ClientDetails": {
+            "type": "object",
+            "properties": {
+                "client_id": {
+                    "type": "string"
+                },
+                "client_secret": {
+                    "type": "string"
+                }
+            }
+        },
+        "AuthType": {
+            "type": "object",
+            "properties": {
+                "auth_type": {
+                    "type": "string"
+                }
+            }
+        },
+        "Tokens": {
+            "description": "List of tokens",
+            "properties": {
+                "access_token": {
+                    "type": "string"
+                },
+                "refresh_token": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "TokensDefinition": {
+            "type": "object",
+            "properties": {
+                "tokens": {
+                    "$ref": "#/definitions/Tokens"
+                }
+            }
+        },
+        "GetTokensAPIResponseType": {
+            "description": "This is the description for get tokens api response",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/ResStatus"
+                },
+                {
+                    "$ref": "#/definitions/TokensDefinition"
+                }
+            ]
+        },
+        "SocialLogin": {
+            "type": "object",
+            "properties": {
+                "provider": {
+                    "type": "string"
+                },
+                "social_provider_token": {
+                    "type": "string"
+                },
+                "social_provider_token_secret": {
+                    "type": "string"
+                }
+            }
+        },
+        "SocialProvider": {
+            "description": "provide in small letters, *facebook* for Facebook",
+            "type": "object",
+            "properties": {
+                "social_provider": {
+                    "type": "string",
+                    "enum": [
+                        "facebook",
+                        "twitter",
+                        "google",
+                        "instagram",
+                        "linkedin"
+                    ]
+                }
+            }
+        },
+        "SocialUser": {
+            "allOf": [
+                {
+                    "$ref": "#/definitions/SocialProvider"
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "user_id": {
+                            "type": "integer"
+                        },
+                        "social_id": {
+                            "type": "string"
+                        },
+                        "social_token": {
+                            "type": "string"
+                        },
+                        "social_name": {
+                            "type": "string"
+                        },
+                        "social_access_token_secret": {
+                            "type": "string"
+                        }
+                    }
+                }
+            ]
+        },
+        "SocialUserResponse": {
+            "allOf": [
+                {
+                    "$ref": "#/definitions/SocialProvider"
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "user_id": {
+                            "type": "integer"
+                        },
+                        "social_id": {
+                            "type": "string"
+                        },
+                        "social_name": {
+                            "type": "string"
+                        }
+                    }
+                }
+            ]
+        },
+        "SocialUserRequest": {
+            "allOf": [
+                {
+                    "$ref": "#/definitions/SocialProvider"
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "social_token": {
+                            "type": "string"
+                        },
+                        "social_access_token_secret": {
+                            "type": "string"
+                        }
+                    }
+                }
+            ]
+        },
+        "GeneralError": {
+            "type": "object",
+            "properties": {
+                "error_code": {
+                    "type": "integer"
+                },
+                "error_remarks": {
+                    "type": "string"
+                }
+            }
+        },
+        "UpdateUserDetailsAPIRequestDefinition": {
+            "allOf": [
+                {
+                    "$ref": "#/definitions/UserDetails"
+                },
+                {
+                    "$ref": "#/definitions/Source"
+                }
+            ]
+        },
+        "UpdateUserDetailsAPIResponseDefinition": {
+            "allOf": [
+                {
+                    "$ref": "#/definitions/ResStatus"
+                }
+            ]
+        },
+        "CompleteUserDetailDefinition": {
+            "allOf": [
+                {
+                    "$ref": "#/definitions/AddMemberDetailsResponse"
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "extra_details": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/UserDetail"
+                            }
+                        }
+                    }
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "social_details": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/SocialUserResponse"
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "MinimalMemberDetailDefinition": {
+            "allOf": [
+                {
+                    "type": "object",
+                    "properties": {
+                        "m_pic_thumbnail": {
+                            "type": "string"
+                        }
+                    }
+                },
+                {
+                    "$ref": "#/definitions/MemberDetails"
+                }
+            ]
+        },
+        "GetMembersRequestByIdRequestDefinition": {
+            "type": "object",
+            "properties": {
+                "user_ids": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "search_q": {
+                    "type": "string"
+                },
+                "exclude_user_ids": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "offset": {
+                    "type": "integer"
+                },
+                "limit": {
+                    "type": "integer"
+                }
+            }
+        },
+        "GetMembersRequestDefinition": {
+            "type": "object",
+            "properties": {
+                "usernames": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "GetLanguageRequestDefinition": {
+            "allOf": [
+                {
+                    "$ref": "#/definitions/MemberId"
+                }
+            ]
+        },
+        "GetLanguageResponseDefinition": {
+            "allOf": [
+                {
+                    "$ref": "#/definitions/ResStatus"
+                },
+                {
+                    "$ref": "#/definitions/Language"
+                }
+            ]
+        },
+        "UpdatePasswordRequestDefinition": {
+            "type": "object",
+            "properties": {
+                "old_password": {
+                    "type": "string"
+                },
+                "new_password": {
+                    "type": "string"
+                }
+            }
+        },
+        "UserRegisterRequestDefinition": {
+            "allOf": [
+                {
+                    "$ref": "#/definitions/DOB"
+                },
+                {
+                    "$ref": "#/definitions/Password"
+                },
+                {
+                    "$ref": "#/definitions/Name"
+                },
+                {
+                    "$ref": "#/definitions/CommonRegistrationDetails"
+                },
+                {
+                    "$ref": "#/definitions/Username"
+                },
+                {
+                    "$ref": "#/definitions/CountryCode"
+                },
+                {
+                    "$ref": "#/definitions/UserRegistrationDetails"
+                }
+            ]
+        },
+        "UserRegisterResponseDefinition": {
+            "allOf": [
+                {
+                    "$ref": "#/definitions/Username"
+                },
+                {
+                    "$ref": "#/definitions/UserId"
+                }
+            ]
+        },
+        "UserLoginRequestDefinition": {
+            "allOf": [
+                {
+                    "$ref": "#/definitions/Username"
+                },
+                {
+                    "$ref": "#/definitions/Password"
+                },
+                {
+                    "$ref": "#/definitions/CountryCode"
+                },
+                {
+                    "$ref": "#/definitions/CommonRegistrationDetails"
+                },
+                {
+                    "$ref": "#/definitions/ClientDetails"
+                },
+                {
+                    "$ref": "#/definitions/AuthType"
+                }
+            ]
+        },
+        "UserByAuthDetail": {
+            "allOf": [
+                {
+                    "$ref": "#/definitions/Username"
+                },
+                {
+                    "$ref": "#/definitions/CountryCode"
+                },
+                {
+                    "$ref": "#/definitions/CommonRegistrationDetails"
+                },
+                {
+                    "$ref": "#/definitions/ClientDetails"
+                },
+                {
+                    "$ref": "#/definitions/AuthType"
+                }
+            ]
+        },
+        "IsStaff": {
+            "type": "object",
+            "properties": {
+                "is_staff": {
+                    "type": "string"
+                }
+            }
+        },
+        "GetTokensV2APIResponseDefinition": {
+            "allOf": [
+                {
+                    "$ref": "#/definitions/GetTokensAPIResponseType"
+                },
+                {
+                    "$ref": "#/definitions/Username"
+                },
+                {
+                    "$ref": "#/definitions/UserId"
+                }
+            ]
+        },
+        "ResetUserPasswordRequestDefitniion": {
+            "allOf": [
+                {
+                    "$ref": "#/definitions/UserLoginRequestDefinition"
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "token": {
+                            "type": "string"
+                        }
+                    }
+                }
+            ]
+        },
+        "SuccessResponseDefinition": {
+            "type": "object",
+            "properties": {
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "RecoverUserPasswordRequestDefinition": {
+            "allOf": [
+                {
+                    "$ref": "#/definitions/Username"
+                },
+                {
+                    "$ref": "#/definitions/CountryCode"
+                },
+                {
+                    "$ref": "#/definitions/CommonRegistrationDetails"
+                },
+                {
+                    "$ref": "#/definitions/ClientDetails"
+                },
+                {
+                    "$ref": "#/definitions/AuthType"
+                }
+            ]
+        },
+        "UserDataUpdateRequestDefinition": {
+            "allOf": [
+                {
+                    "$ref": "#/definitions/Username"
+                },
+                {
+                    "$ref": "#/definitions/CountryCode"
+                },
+                {
+                    "$ref": "#/definitions/CommonRegistrationDetails"
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "update_type": {
+                            "type": "string"
+                        }
+                    }
+                }
+            ]
+        },
+        "VerifyToken": {
+          "type": "object",
+                    "properties": {
+                        "verify_token": {
+                            "type": "string"
+                        }
+                    }
+        },
+        "VerifyUserDataUpdateRequestDefinition": {
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CountryCode"
+                },
+                {
+                    "$ref": "#/definitions/CommonRegistrationDetails"
+                },
+                {
+                    "$ref": "#/definitions/ClientDetails"
+                },
+                {
+                    "$ref": "#/definitions/AuthType"
+                },
+                {
+                    "$ref": "#/definitions/VerifyToken"
+                }
+            ]
+        },
+        "VerifyUserDataUpdateRequestWithoutClient": {
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CountryCode"
+                },
+                {
+                    "$ref": "#/definitions/CommonRegistrationDetails"
+                },
+                {
+                    "$ref": "#/definitions/AuthType"
+                },
+                {
+                    "$ref": "#/definitions/VerifyToken"
+                }
+            ]
+        },
+        "SocialLoginRequestDefinition": {
+            "allOf": [
+                {
+                    "$ref": "#/definitions/ClientDetails"
+                },
+                {
+                    "$ref": "#/definitions/SocialLogin"
+                }
+            ]
+        },
+        "AccountActivationRequestDefinition": {
+            "type": "object",
+            "properties": {
+                "make_active": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "SetPasswordRequestDefinition": {
+            "type": "object",
+            "properties": {
+                "password": {
+                    "type": "string"
+                }
+            }
+        },
+        "PhoneNumber": {
+            "type": "object",
+            "properties": {
+              "phone_number": {
+                  "type": "string"
+              },
+                "country_code": {
+                    "type": "string"
+                }
+            }
+        },
+        "Email": {
+            "type": "object",
+            "properties": {
+              "email": {
+                  "type": "string"
+              }
+            }
+        },
+        "PhoneNumberEmail": {
+            "allOf": [
+                {
+                    "$ref": "#/definitions/Email"
+                },
+                {
+                    "$ref": "#/definitions/PhoneNumber"
+                }
+            ]
+        },
+        "ResendOTPRequestDefinition": {
+            "allOf": [
+                {
+                    "$ref": "#/definitions/Username"
+                },
+                {
+                    "$ref": "#/definitions/ClientDetails"
+                },
+                {
+                    "$ref": "#/definitions/AuthType"
+                },
+                {
+                    "$ref": "#/definitions/PhoneNumberEmail"
+                }
+            ]
+        },
+        "SocialTokenRequestDefinition": {
+            "allOf": [
+                {
+                    "$ref": "#/definitions/SocialProvider"
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "social_ids": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "SearchUserByAuthType": {
+            "allOf": [
+                {
+                    "$ref": "#/definitions/Username"
+                },
+                {
+                    "$ref": "#/definitions/CommonRegistrationDetails"
+                },
+                {
+                    "$ref": "#/definitions/CountryCode"
+                },
+                {
+                    "$ref": "#/definitions/AuthType"
+                }
+            ]
+        },
+        "DeviceInformationDefinition": {
+            "allOf": [
+                {
+                    "$ref": "#/definitions/DeviceId"
+                },
+                {
+                    "$ref": "#/definitions/DeviceType"
+                }
+            ]
+        }
+    }
+}

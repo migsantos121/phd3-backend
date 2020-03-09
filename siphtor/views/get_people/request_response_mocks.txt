@@ -1,0 +1,40 @@
+
+
+REQUEST_BODY_JSON = """
+{
+    "limit": 1, 
+    "relation": "FOLLOW", 
+    "offset": 1
+}
+"""
+
+
+RESPONSE_200_JSON = """
+[
+    {
+        "user_info": {
+            "phone_number": "string", 
+            "username": "string", 
+            "user_id": 1, 
+            "name": "string", 
+            "profile_pic": "string", 
+            "gender": "string", 
+            "country_code": "string", 
+            "extra_details": [
+                {
+                    "ud_value": "string", 
+                    "ud_key": "string"
+                }
+            ], 
+            "email": "string"
+        }, 
+        "counts": [
+            {
+                "relation": "FOLLOW", 
+                "relation_count": 1
+            }
+        ]
+    }
+]
+"""
+

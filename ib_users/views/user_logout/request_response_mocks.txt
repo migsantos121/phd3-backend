@@ -1,0 +1,16 @@
+
+
+
+RESPONSE_200_JSON = """
+{
+    "success": true
+}
+"""
+
+RESPONSE_400_JSON = """
+{
+    "error_code": 1, 
+    "error_remarks": "string"
+}
+"""
+

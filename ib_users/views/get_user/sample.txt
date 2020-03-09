@@ -1,0 +1,7 @@
+
+
+
+RESPONSE_200_JSON = """
+{"m_id": 1, "extra_details": [{"ud_value": "string", "ud_key": "string"}, {"ud_value": "string", "ud_key": "string"}], "m_pic": "string", "dob": "2099-12-31 00:00:00", "m_country_code": "string", "m_username": "string", "is_active": true, "m_pic_thumbnail": "string", "social_details": [{"user_id": 1, "social_id": "string", "social_provider": "facebook", "social_name": "string"}, {"user_id": 1, "social_id": "string", "social_provider": "facebook", "social_name": "string"}], "is_admin": true, "m_status": "string", "m_email": "string", "m_name": "string", "m_phone_number": "string", "m_gender": "string"}
+"""
+

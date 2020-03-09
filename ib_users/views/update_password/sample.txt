@@ -1,0 +1,10 @@
+
+
+REQUEST_BODY_JSON = """
+{
+    "new_password": "string", 
+    "old_password": "string"
+}
+"""
+
+

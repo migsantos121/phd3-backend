@@ -1,0 +1,17 @@
+
+
+REQUEST_BODY_JSON = """
+{
+    "social_ids": [
+        "string", 
+        "string"
+    ], 
+    "social_provider": "facebook"
+}
+"""
+
+
+RESPONSE_200_JSON = """
+[{"user_id": 1, "social_id": "string", "social_provider": "facebook", "social_name": "string"}, {"user_id": 1, "social_id": "string", "social_provider": "facebook", "social_name": "string"}]
+"""
+

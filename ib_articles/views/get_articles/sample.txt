@@ -1,0 +1,29 @@
+
+
+REQUEST_BODY_JSON = """
+{
+    "search_q": "string", 
+    "limit": 1, 
+    "filters": {
+        "sorts": {
+            "posted_date": "string", 
+            "published_time": "string"
+        }, 
+        "published_time": {
+            "start_date_time": "string", 
+            "end_date_time": "string"
+        }, 
+        "article_ids": [
+            1, 
+            1
+        ]
+    }, 
+    "offset": 1
+}
+"""
+
+
+RESPONSE_200_JSON = """
+[{"news_source": {"url": "string", "name": "string"}, "title": "string", "url": "string", "image": "string", "tags": "string", "author_name": "string", "summary": "string", "keywords": [{"keyword_id": 1, "keyword": "string"}, {"keyword_id": 1, "keyword": "string"}], "published_time": "string", "article_id": 1}, {"news_source": {"url": "string", "name": "string"}, "title": "string", "url": "string", "image": "string", "tags": "string", "author_name": "string", "summary": "string", "keywords": [{"keyword_id": 1, "keyword": "string"}, {"keyword_id": 1, "keyword": "string"}], "published_time": "string", "article_id": 1}]
+"""
+

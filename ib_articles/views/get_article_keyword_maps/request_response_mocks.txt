@@ -1,0 +1,26 @@
+
+
+REQUEST_BODY_JSON = """
+{
+    "keyword_ids": [
+        1
+    ]
+}
+"""
+
+
+RESPONSE_200_JSON = """
+[
+    {
+        "relevance": 1.1, 
+        "keyword_id": 1, 
+        "article_id": 1, 
+        "keyword_group": {
+            "group_weight": 1.1, 
+            "sub_group": "string", 
+            "group": "string"
+        }
+    }
+]
+"""
+

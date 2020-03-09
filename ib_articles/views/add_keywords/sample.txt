@@ -1,0 +1,20 @@
+
+
+REQUEST_BODY_JSON = """
+[
+    {
+        "group_id": 1, 
+        "keyword": "string"
+    }, 
+    {
+        "group_id": 1, 
+        "keyword": "string"
+    }
+]
+"""
+
+
+RESPONSE_200_JSON = """
+[{"keyword_id": 1, "keyword": "string"}, {"keyword_id": 1, "keyword": "string"}]
+"""
+

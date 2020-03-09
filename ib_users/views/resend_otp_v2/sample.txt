@@ -1,0 +1,16 @@
+
+
+REQUEST_BODY_JSON = """
+{
+    "username": "string", 
+    "client_secret": "string", 
+    "auth_type": "string", 
+    "client_id": "string"
+}
+"""
+
+
+RESPONSE_200_JSON = """
+{"username": "string", "user_id": 1}
+"""
+

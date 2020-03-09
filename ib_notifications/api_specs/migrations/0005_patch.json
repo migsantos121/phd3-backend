@@ -1,0 +1,1 @@
+[{"path": "/definitions/GroupNotificationRequest/properties/push_notification_type", "value": {"enum": ["DATA", "NOTIFICATION"], "type": "string"}, "op": "add"}]

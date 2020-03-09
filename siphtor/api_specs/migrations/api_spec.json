@@ -1,0 +1,895 @@
+{
+  "basePath": "/api/phd3/",
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "security": [
+  ],
+  "definitions": {
+    "Keyword": {
+      "type": "object",
+      "properties": {
+        "keyword_id": {
+          "type": "integer"
+        },
+        "keyword": {
+          "type": "string"
+        }
+      }
+    },
+    "NewsSource": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        }
+      }
+    },
+    "Article": {
+      "type": "object",
+      "properties": {
+        "article_id": {
+          "type": "integer"
+        },
+        "title": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "summary": {
+          "type": "string"
+        },
+        "author_name": {
+          "type": "string"
+        },
+        "published_time": {
+          "type": "string"
+        },
+        "tags": {
+          "type": "string"
+        },
+        "keywords": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Keyword"
+          }
+        },
+        "image": {
+          "type": "string"
+        },
+        "news_source": {
+          "$ref": "#/definitions/NewsSource"
+        },
+        "action_summary": {
+          "$ref": "#/definitions/ActionSummary"
+        }
+      }
+    },
+    "LikeSummary": {
+      "type": "object",
+      "properties": {
+        "positive": {
+          "type": "integer"
+        },
+        "negative": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "positive",
+        "negative"
+      ]
+    },
+    "ShareSummary": {
+      "type": "object",
+      "properties": {
+        "positive": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "positive"
+      ]
+    },
+    "BookmarkSummary": {
+      "type": "object",
+      "properties": {
+        "positive": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "positive"
+      ]
+    },
+    "BasicActionSummary": {
+      "type": "object",
+      "properties": {
+        "share_summary": {
+          "$ref": "#/definitions/ShareSummary"
+        },
+        "like_summary": {
+          "$ref": "#/definitions/LikeSummary"
+        },
+        "comments_count": {
+          "type": "integer"
+        },
+        "is_shared": {
+          "type": "boolean"
+        },
+        "is_liked": {
+          "type": "boolean"
+        },
+        "is_disliked": {
+          "type": "boolean"
+        }
+      }
+    },
+    "ActionSummary": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/AdvancedActionSummary"
+        },
+        {
+          "$ref": "#/definitions/BasicActionSummary"
+        }
+      ]
+    },
+    "AdvancedActionSummary": {
+      "type": "object",
+      "properties": {
+        "bookmark_summary": {
+          "$ref": "#/definitions/BookmarkSummary"
+        },
+        "is_bookmarked": {
+          "type": "boolean"
+        }
+      }
+    },
+    "ArticlesFilters": {
+      "type": "object",
+      "properties": {
+        "is_bookmarked": {
+          "type": "boolean"
+        },
+        "is_liked": {
+          "type": "boolean"
+        },
+        "is_shared": {
+          "type": "boolean"
+        }
+      }
+    },
+    "KeywordIds": {
+      "type": "object",
+      "properties": {
+        "keyword_ids": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
+        }
+      }
+    },
+    "CategoryIds": {
+      "type": "object",
+      "properties": {
+        "category_ids": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
+        }
+      }
+    },
+    "SearchQ": {
+      "type": "object",
+      "properties": {
+        "search_q": {
+          "type": "string"
+        }
+      }
+    },
+    "FilterArticleRequest": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/Pagination"
+        },
+        {
+          "$ref": "#/definitions/SearchQ"
+        },
+        {
+          "$ref": "#/definitions/ArticlesFilters"
+        }
+      ]
+    },
+    "BasicFilterPostsRequest": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/Pagination"
+        },
+        {
+          "$ref": "#/definitions/SearchQ"
+        },
+        {
+          "$ref": "#/definitions/MediaTypes"
+        }
+      ]
+    },
+    "IsLiked": {
+      "type": "object",
+      "properties": {
+        "is_liked": {
+          "type": "boolean"
+        }
+      }
+    },
+    "IsShared": {
+      "type": "object",
+      "properties": {
+        "is_shared": {
+          "type": "boolean"
+        }
+      }
+    },
+    "FilterPostsRequest": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BasicFilterPostsRequest"
+        },
+        {
+          "$ref": "#/definitions/IsLiked"
+        },
+        {
+          "$ref": "#/definitions/IsShared"
+        }
+      ]
+    },
+    "Pagination": {
+      "type": "object",
+      "properties": {
+        "offset": {
+          "type": "integer"
+        },
+        "limit": {
+          "type": "integer"
+        }
+      }
+    },
+    "PaginationRequest": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/CategoryIds"
+        },
+        {
+          "$ref": "#/definitions/KeywordIds"
+        },
+        {
+          "$ref": "#/definitions/Pagination"
+        },
+        {
+          "$ref": "#/definitions/SearchQ"
+        }
+      ]
+    },
+    "BasicUser": {
+      "type": "object",
+      "properties": {
+        "gender": {
+          "type": "string"
+        },
+        "phone_number": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "country_code": {
+          "type": "string"
+        },
+        "username": {
+          "type": "string"
+        },
+        "profile_pic": {
+          "type": "string"
+        },
+        "user_id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "extra_details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/UserDetail"
+          }
+        }
+      }
+    },
+    "Post": {
+      "type": "object",
+      "properties": {
+        "post_id": {
+          "type": "integer"
+        },
+        "user_id": {
+          "type": "integer"
+        },
+        "article_id": {
+          "type": "integer"
+        },
+        "content": {
+          "type": "string"
+        },
+        "multimedia_url": {
+          "type": "string"
+        },
+        "multimedia_type": {
+          "type": "string",
+          "enum": [
+            "IMAGE",
+            "VIDEO",
+            "AUDIO"
+          ]
+        },
+        "article_info": {
+          "$ref": "#/definitions/Article"
+        },
+        "action_summary": {
+          "$ref": "#/definitions/BasicActionSummary"
+        },
+        "creation_datetime": {
+          "type": "string"
+        }
+      }
+    },
+    "Stat": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "integer"
+        },
+        "is_liked": {
+          "type": "integer"
+        },
+        "is_disliked": {
+          "type": "integer"
+        },
+        "is_shared": {
+          "type": "integer"
+        },
+        "is_bookmarked": {
+          "type": "integer"
+        }
+      }
+    },
+    "Stats": {
+      "type": "object",
+      "properties": {
+        "posts": {
+          "$ref": "#/definitions/Stat"
+        },
+        "articles": {
+          "$ref": "#/definitions/Stat"
+        },
+        "social_counts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RelationCount"
+          }
+        },
+        "posts_media_type": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "media_type": {
+                "type": "string",
+                "enum": [
+                  "IMAGE",
+                  "VIDEO",
+                  "AUDIO"
+                ]
+              },
+              "count": {
+                "type": "integer"
+              }
+            }
+          }
+        }
+      }
+    },
+    "People": {
+      "type": "object",
+      "properties": {
+        "user_info": {
+          "$ref": "#/definitions/BasicUser"
+        },
+        "counts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RelationCount"
+          }
+        }
+      }
+    },
+    "Count": {
+      "type": "object",
+      "properties": {
+        "relation_count": {
+          "type": "integer"
+        }
+      }
+    },
+    "Relation": {
+      "type": "object",
+      "properties": {
+        "relation": {
+          "type": "string",
+          "enum": [
+            "FOLLOW",
+            "FOLLOWING"
+          ]
+        }
+      }
+    },
+    "RelationCount": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/Count"
+        },
+        {
+          "$ref": "#/definitions/Relation"
+        }
+      ]
+    },
+    "RelationRequest": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/Relation"
+        },
+        {
+          "$ref": "#/definitions/Pagination"
+        }
+      ]
+    },
+    "SearchQPaginationRequest": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/SearchQ"
+        },
+        {
+          "$ref": "#/definitions/Pagination"
+        }
+      ]
+    },
+    "MediaTypes": {
+      "type": "object",
+      "properties": {
+        "media_types": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "IMAGE",
+              "VIDEO",
+              "AUDIO"
+            ]
+          }
+        }
+      }
+    },
+    "UserDetail": {
+      "description": "This is the description for user details to be updated",
+      "properties": {
+        "ud_key": {
+          "type": "string"
+        },
+        "ud_value": {
+          "type": "string"
+        }
+      },
+      "type": "object",
+      "required": [
+        "ud_key"
+      ]
+    }
+  },
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://127.0.0.1:8000/api"
+  },
+  "host": "127.0.0.1:8000",
+  "info": {
+    "contact": {
+      "email": "tech@ibtspl.com"
+    },
+    "description": "This is a sample description",
+    "termsOfService": "http://ibtpsl.com",
+    "title": "Ib Service",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/articles/": {
+      "post": {
+        "description": "This will return the lit of articles recommended for user",
+        "operationId": "get_user_articles",
+        "security": [
+          {
+            "oauth": [
+              "read"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/ArticlePaginatedRequest"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "user creation success response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Article"
+              }
+            }
+          }
+        },
+        "summary": "Get user articles",
+        "tags": [
+          "articles"
+        ]
+      }
+    },
+    "/articles/filter/": {
+      "post": {
+        "description": "This will return the lit of articles filtered for user",
+        "operationId": "filter_articles",
+        "security": [
+          {
+            "oauth": [
+              "read"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/FilterArticleRequest"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "user creation success response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Article"
+              }
+            }
+          }
+        },
+        "summary": "Get filtered articles",
+        "tags": [
+          "articles"
+        ]
+      }
+    },
+    "/articles/{article_id}/": {
+      "parameters": [
+        {
+          "$ref": "#/parameters/ArticleId"
+        }
+      ],
+      "get": {
+        "parameters": [],
+        "security": [
+          {
+            "oauth": [
+              "read"
+            ]
+          }
+        ],
+        "description": "",
+        "operationId": "get_article",
+        "responses": {
+          "200": {
+            "description": "article info",
+            "schema": {
+              "$ref": "#/definitions/Article"
+            }
+          }
+        },
+        "summary": "Get article by article id",
+        "tags": [
+          "articles"
+        ]
+      }
+    },
+    "/posts/filter/": {
+      "post": {
+        "description": "This will return the lit of articles filtered for user",
+        "operationId": "filter_posts",
+        "security": [
+          {
+            "oauth": [
+              "read"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/FilterPostsRequest"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "user creation success response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Post"
+              }
+            }
+          }
+        },
+        "summary": "Get filtered articles",
+        "tags": [
+          "posts"
+        ]
+      }
+    },
+    "/posts/": {
+      "post": {
+        "description": "This will return the lit of articles filtered for user",
+        "operationId": "get_user_posts",
+        "security": [
+          {
+            "oauth": [
+              "read"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/BasicFilterPostsRequest"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "user creation success response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Post"
+              }
+            }
+          }
+        },
+        "summary": "Get filtered articles",
+        "tags": [
+          "posts"
+        ]
+      }
+    },
+    "/posts/followers/": {
+      "post": {
+        "description": "This will return the lit of articles filtered for user followers",
+        "operationId": "get_followers_posts",
+        "security": [
+          {
+            "oauth": [
+              "read"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/BasicFilterPostsRequest"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "user creation success response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Post"
+              }
+            }
+          }
+        },
+        "summary": "Get filtered articles",
+        "tags": [
+          "posts"
+        ]
+      }
+    },
+    "/users/search/follow/": {
+      "post": {
+        "description": "get_users_to_follow",
+        "operationId": "get_users_to_follow",
+        "security": [
+          {
+            "oauth": [
+              "read"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/SearchQPaginationRequest"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "get_users_to_follow response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/BasicUser"
+              }
+            }
+          }
+        },
+        "summary": "Get users to follow",
+        "tags": [
+          "users"
+        ]
+      }
+    },
+    "/people/": {
+      "post": {
+        "description": "get_people",
+        "operationId": "get_people",
+        "security": [
+          {
+            "oauth": [
+              "read"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/RelationRequest"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "get_people response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/People"
+              }
+            }
+          }
+        },
+        "summary": "Get users to follow",
+        "tags": [
+          "people"
+        ]
+      }
+    },
+    "/user/stats/": {
+      "get": {
+        "description": "get_user_stats",
+        "operationId": "get_user_stats",
+        "security": [
+          {
+            "oauth": [
+              "read"
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "get_user_stats response",
+            "schema": {
+              "$ref": "#/definitions/Stats"
+            }
+          }
+        },
+        "summary": "Get users stats",
+        "tags": [
+          "stats"
+        ]
+      }
+    }
+  },
+  "schemes": [
+    "http"
+  ],
+  "securityDefinitions": {
+    "oauth": {
+      "tokenUrl": "http://auth.ibtspl.com/oauth2/",
+      "flow": "password",
+      "scopes": {
+        "read": "read users",
+        "write": "create users",
+        "update": "update users",
+        "delete": "delete users"
+      },
+      "type": "oauth2"
+    }
+  },
+  "swagger": "2.0",
+  "tags": [
+    {
+      "description": "Operations about user",
+      "externalDocs": {
+        "description": "Find out more about our store",
+        "url": "http://swagger.io"
+      },
+      "name": "user"
+    }
+  ],
+  "parameters": {
+    "ArticlePaginatedRequest": {
+      "description": "pagination request",
+      "in": "body",
+      "name": "PaginationRequests",
+      "schema": {
+        "$ref": "#/definitions/PaginationRequest"
+      }
+    },
+    "FilterArticleRequest": {
+      "description": "pagination request",
+      "in": "body",
+      "name": "PaginationRequests",
+      "schema": {
+        "$ref": "#/definitions/FilterArticleRequest"
+      }
+    },
+    "FilterPostsRequest": {
+      "description": "pagination request",
+      "in": "body",
+      "name": "PaginationRequests",
+      "schema": {
+        "$ref": "#/definitions/FilterPostsRequest"
+      }
+    },
+    "BasicFilterPostsRequest": {
+      "description": "pagination request",
+      "in": "body",
+      "name": "PaginationRequests",
+      "schema": {
+        "$ref": "#/definitions/BasicFilterPostsRequest"
+      }
+    },
+    "SearchQPaginationRequest": {
+      "description": "pagination request",
+      "in": "body",
+      "name": "PaginationRequests",
+      "schema": {
+        "$ref": "#/definitions/SearchQPaginationRequest"
+      }
+    },
+    "RelationRequest": {
+      "description": "pagination request",
+      "in": "body",
+      "name": "PaginationRequests",
+      "schema": {
+        "$ref": "#/definitions/RelationRequest"
+      }
+    },
+    "ArticleId": {
+      "description": "article id",
+      "in": "path",
+      "name": "article_id",
+      "required": true,
+      "type": "integer"
+    }
+  },
+  "responses": {
+  }
+}

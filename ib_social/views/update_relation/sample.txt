@@ -1,0 +1,21 @@
+
+
+REQUEST_BODY_JSON = """
+{
+    "r_m_id": 1, 
+    "m_id": 1, 
+    "relation": "FRIEND", 
+    "r_m_type": "USER", 
+    "m_type": "USER"
+}
+"""
+
+
+RESPONSE_200_JSON = """
+[{"status": "string", "relation": "string"}, {"status": "string", "relation": "string"}]
+"""
+
+RESPONSE_400_JSON = """
+{"error_code": 1, "error_remarks": "string"}
+"""
+

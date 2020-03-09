@@ -1,0 +1,13 @@
+
+
+REQUEST_BODY_JSON = """
+{
+    "category": "string"
+}
+"""
+
+
+RESPONSE_200_JSON = """
+{"category_id": 1}
+"""
+

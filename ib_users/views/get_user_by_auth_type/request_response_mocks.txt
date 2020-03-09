@@ -1,0 +1,26 @@
+
+
+REQUEST_BODY_JSON = """
+{
+    "username": "string", 
+    "phone_number": "string", 
+    "country_code": "string", 
+    "client_id": "string", 
+    "client_secret": "string", 
+    "email": "string", 
+    "auth_type": "string"
+}
+"""
+
+
+RESPONSE_200_JSON = """
+{
+    "m_id": 1, 
+    "m_pic": "string", 
+    "dob": "2099-12-31 00:00:00", 
+    "m_pic_thumbnail": "string", 
+    "m_username": "string", 
+    "m_name": "string"
+}
+"""
+

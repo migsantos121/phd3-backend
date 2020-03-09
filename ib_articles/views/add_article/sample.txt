@@ -1,0 +1,20 @@
+
+
+REQUEST_BODY_JSON = """
+{
+    "published_time": "string", 
+    "title": "string", 
+    "url": "string", 
+    "news_source_id": 1, 
+    "image": "string", 
+    "tags": "string", 
+    "author_name": "string", 
+    "summary": "string"
+}
+"""
+
+
+RESPONSE_200_JSON = """
+{"article_id": 1}
+"""
+

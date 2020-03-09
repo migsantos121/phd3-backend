@@ -1,0 +1,7 @@
+
+
+
+RESPONSE_200_JSON = """
+{"total": 1, "posts_media_type": [{"count": 1, "media_type": "IMAGE"}, {"count": 1, "media_type": "IMAGE"}]}
+"""
+

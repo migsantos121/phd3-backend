@@ -1,0 +1,36 @@
+
+
+REQUEST_BODY_JSON = """
+{
+    "phone_number": "string", 
+    "username": "string", 
+    "first_name": "string", 
+    "last_name": "string", 
+    "name": "string", 
+    "dob": "2099-12-31 00:00:00", 
+    "gender": "string", 
+    "pic_thumbnail": "string", 
+    "pic": "string", 
+    "registration_source": "string", 
+    "reg_type": "string", 
+    "country_code": "string", 
+    "password": "string", 
+    "email": "string"
+}
+"""
+
+
+RESPONSE_200_JSON = """
+{
+    "username": "string", 
+    "user_id": 1
+}
+"""
+
+RESPONSE_400_JSON = """
+{
+    "error_code": 1, 
+    "error_remarks": "string"
+}
+"""
+

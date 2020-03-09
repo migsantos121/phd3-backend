@@ -1,0 +1,7 @@
+
+
+
+RESPONSE_200_JSON = """
+{"category": "string", "keywords": [{"keyword_id": 1, "keyword": "string"}, {"keyword_id": 1, "keyword": "string"}], "category_id": 1}
+"""
+

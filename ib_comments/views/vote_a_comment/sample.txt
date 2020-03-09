@@ -1,0 +1,20 @@
+
+
+REQUEST_BODY_JSON = """
+{
+    "vote": "UP_VOTE", 
+    "entity_id": 1, 
+    "comment_id": 1, 
+    "entity_type": "string"
+}
+"""
+
+
+RESPONSE_200_JSON = """
+{"comment": "string", "username": "string", "entity_id": 1, "user_id": 1, "entity_type": "string", "up_votes": 1, "comment_id": 1, "down_votes": 1, "user_thumbnail_url": "string", "multimedia_url": "string", "multimedia_type": "string"}
+"""
+
+RESPONSE_400_JSON = """
+{"error_code": 1, "error_remarks": "string"}
+"""
+

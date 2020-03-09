@@ -1,0 +1,1499 @@
+{
+    "basePath": "/api/ib_social/",
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "security": [
+    ],
+    "externalDocs": {
+        "description": "Find out more about Swagger",
+        "url": "http://127.0.0.1:8000/api"
+    },
+    "host": "192.168.1.87:8003",
+    "info": {
+        "contact": {
+            "email": "tech@ibtspl.com"
+        },
+        "description": "This is a sample description",
+        "termsOfService": "http://ibtpsl.com",
+        "title": "Ib Service",
+        "version": "1.0.0"
+    },
+    "schemes": [
+        "http"
+    ],
+    "securityDefinitions": {
+        "oauth": {
+            "tokenUrl": "http://auth.ibtspl.com/oauth2/",
+            "flow": "password",
+            "scopes": {
+                "read": "read users",
+                "write": "create users",
+                "update": "update users",
+                "delete": "delete users"
+            },
+            "type": "oauth2"
+        }
+    },
+    "swagger": "2.0",
+    "tags": [
+        {
+            "description": "Operations about user",
+            "externalDocs": {
+                "description": "Find out more about our store",
+                "url": "http://swagger.io"
+            },
+            "name": "user"
+        }
+    ],
+    "paths": {
+        "/member/update_relation/": {
+            "post": {
+                "description": "Update Relation API",
+                "operationId": "update_relation",
+                "tags": [
+                    "update_relation"
+                ],
+                "security": [
+                    {
+                        "oauth": [
+                            "read",
+                            "write"
+                        ]
+                    }
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/UpdateRelationParameter"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "relation update success response",
+                        "$ref": "#/responses/UpdateRelationResponse"
+                    },
+                    "400": {
+                        "description": "relation update success response",
+                        "$ref": "#/responses/GeneralError"
+                    }
+                },
+                "summary": "Update Relation"
+            }
+        },
+        "/member/verify_relations/": {
+            "post": {
+                "description": "Relation API",
+                "operationId": "verify_relations",
+                "tags": [
+                    "relation"
+                ],
+                "security": [
+                    {
+                        "oauth": [
+                            "read",
+                            "write"
+                        ]
+                    }
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/RelationParameter"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "relation success response",
+                        "$ref": "#/responses/RelationResponse"
+                    },
+                    "400": {
+                        "description": "relation update success response",
+                        "$ref": "#/responses/GeneralError"
+                    }
+                },
+                "summary": "Verify Relation"
+            }
+        },
+        "/member/get_relations/": {
+            "post": {
+                "description": "Relations API",
+                "operationId": "get_relations",
+                "tags": [
+                    "relations"
+                ],
+                "security": [
+                    {
+                        "oauth": [
+                            "read",
+                            "write"
+                        ]
+                    }
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/RelationsParameter"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "relations response by relation types",
+                        "$ref": "#/responses/RelationsResponse"
+                    },
+                    "400": {
+                        "description": "relation update success response",
+                        "$ref": "#/responses/GeneralError"
+                    }
+                },
+                "summary": "Get relations by relation type"
+            }
+        },
+        "/member/get_inverse_relations/": {
+            "post": {
+                "description": "Relations API",
+                "operationId": "get_inverse_relations",
+                "tags": [
+                    "relations"
+                ],
+                "security": [
+                    {
+                        "oauth": [
+                            "read",
+                            "write"
+                        ]
+                    }
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/InverseRelationsParameter"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "relations response by relation types",
+                        "$ref": "#/responses/InverseRelationsResponse"
+                    },
+                    "400": {
+                        "description": "relation update success response",
+                        "$ref": "#/responses/GeneralError"
+                    }
+                },
+                "summary": "Get relations by relation type"
+            }
+        },
+        "/relations/stats/": {
+            "post": {
+                "description": "Relations stats API",
+                "operationId": "get_relations_stats",
+                "tags": [
+                    "relations"
+                ],
+                "security": [
+                    {
+                        "oauth": [
+                            "read",
+                            "write"
+                        ]
+                    }
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/RelationStatsParameter"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "relations response by relation types",
+                        "$ref": "#/responses/RelationStatsResponse"
+                    }
+                },
+                "summary": "Get relations stats"
+            }
+        },
+        "/friends_with_relation/": {
+            "post": {
+                "description": "Relations API",
+                "operationId": "friends_with_relation",
+                "tags": [
+                    "relations"
+                ],
+                "security": [
+                    {
+                        "oauth": [
+                            "read",
+                            "write"
+                        ]
+                    }
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/FriendsRelationsParameter"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "relations response by relation types",
+                        "$ref": "#/responses/FriendsRelationsResponse"
+                    },
+                    "400": {
+                        "description": "relation update success response",
+                        "$ref": "#/responses/GeneralError"
+                    }
+                },
+                "summary": "Get relations by relation type"
+            }
+        },
+        "/member/get_friends_list/": {
+            "post": {
+                "description": "Relations API",
+                "operationId": "get_friends_list",
+                "tags": [
+                    "friends_list"
+                ],
+                "security": [
+                    {
+                        "oauth": [
+                            "read",
+                            "write"
+                        ]
+                    }
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/GetFriendsListParameter"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "relations response by relation types",
+                        "$ref": "#/responses/GetFriendsListResponse"
+                    },
+                    "400": {
+                        "description": "relation update success response",
+                        "$ref": "#/responses/GeneralError"
+                    }
+                },
+                "summary": "Get friends list"
+            }
+        },
+        "/member/get_friends_list/bulk/": {
+            "post": {
+                "description": "Relations API",
+                "operationId": "get_friends_list_bulk",
+                "tags": [
+                    "friends_list"
+                ],
+                "security": [
+                    {
+                        "oauth": [
+                            "read",
+                            "write"
+                        ]
+                    }
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/GetFriendsListBulkParameter"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "relations response by relation types",
+                        "$ref": "#/responses/GetFriendsListBulkResponse"
+                    },
+                    "400": {
+                        "description": "relation update success response",
+                        "$ref": "#/responses/GeneralError"
+                    }
+                },
+                "summary": "Get friends list"
+            }
+        },
+        "/member/update_relation_status/": {
+            "post": {
+                "description": "Update Relation status API",
+                "operationId": "update_relation_status",
+                "tags": [
+                    "update_relation"
+                ],
+                "security": [
+                    {
+                        "oauth": [
+                            "read",
+                            "write"
+                        ]
+                    }
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/UpdateRelationStatusParameter"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "relation update success response",
+                        "$ref": "#/responses/UpdateRelationResponse"
+                    },
+                    "400": {
+                        "description": "relation update success response",
+                        "$ref": "#/responses/GeneralError"
+                    }
+                },
+                "summary": "Update Relation"
+            }
+        },
+        "/member/get_pending_relation_requests/": {
+            "post": {
+                "description": "Update Relation API",
+                "operationId": "get_pending_relation_requests",
+                "tags": [
+                    "relation_requests"
+                ],
+                "security": [
+                    {
+                        "oauth": [
+                            "read",
+                            "write"
+                        ]
+                    }
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/GetPendingRelationRequestParameter"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "relation update success response",
+                        "$ref": "#/responses/GetFriendsListResponse"
+                    },
+                    "400": {
+                        "description": "relation update success response",
+                        "$ref": "#/responses/GeneralError"
+                    }
+                },
+                "summary": "Update Relation"
+            }
+        },
+        "/member/get_pending_relations_sent/": {
+            "post": {
+                "description": "Get Pending Relations Sent API",
+                "operationId": "get_pending_relations_sent",
+                "tags": [
+                    "relations_sent"
+                ],
+                "security": [
+                    {
+                        "oauth": [
+                            "read",
+                            "write"
+                        ]
+                    }
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/GetPendingRelationsSentParameter"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Get pending relations sent response",
+                        "$ref": "#/responses/GetFriendsListResponse"
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "$ref": "#/responses/GeneralError"
+                    }
+                },
+                "summary": "Get Pending Relations sent"
+            }
+        },
+        "/user/link_social_account/": {
+            "post": {
+                "security": [
+                    {
+                        "oauth": [
+                            "write"
+                        ]
+                    }
+                ],
+                "summary": "link_user_social_account",
+                "operationId": "link_user_social_account",
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/SocialAccountLinkRequest"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/responses/SocialUser"
+                    }
+                },
+                "tags": [
+                    "social"
+                ]
+            }
+        },
+        "/user/delink_social_account/": {
+            "post": {
+                "security": [
+                    {
+                        "oauth": [
+                            "write"
+                        ]
+                    }
+                ],
+                "summary": "delink_user_social_account",
+                "operationId": "delink_user_social_account",
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/SocialAccountDelinkRequest"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 OK"
+                    }
+                },
+                "tags": [
+                    "social"
+                ]
+            }
+        }
+    },
+    "definitions": {
+        "User": {
+            "description": "This is the description for User model/definition",
+            "properties": {
+                "firstName": {
+                    "type": "string"
+                },
+                "id": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "lastName": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "phone": {
+                    "type": "string"
+                },
+                "userStatus": {
+                    "description": "User Status updated",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "username": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "firstName",
+                "lastName",
+                "password",
+                "phone"
+            ]
+        },
+        "GeneralError": {
+            "type": "object",
+            "properties": {
+                "error_code": {
+                    "type": "integer"
+                },
+                "error_remarks": {
+                    "type": "string"
+                }
+            }
+        },
+        "RelationId": {
+            "type": "object",
+            "properties": {
+                "m_id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "MemberType": {
+            "type": "object",
+            "properties": {
+                "m_type": {
+                    "type": "string",
+                    "enum": [
+                        "USER",
+                        "MENTOR",
+                        "INVESTOR",
+                        "INCUBATOR",
+                        "FELLOW STARTUPS",
+                        "STARTUP SERVICES"
+                    ]
+                }
+            }
+        },
+        "RelationTypes": {
+            "type": "object",
+            "properties": {
+                "relation_types": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "enum": [
+                            "FRIEND",
+                            "FB_FRIEND",
+                            "FOLLOW",
+                            "UNFOLLOW",
+                            "UNFRIEND",
+                            "FB_UNFRIEND"
+                        ]
+                    }
+                }
+            }
+        },
+        "BasicRelationStats": {
+            "allOf": [
+                {
+                    "$ref": "#/definitions/RelationId"
+                },
+                {
+                    "$ref": "#/definitions/MemberType"
+                }
+            ]
+        },
+        "RelationStatsRequest": {
+            "allOf": [
+                {
+                    "$ref": "#/definitions/BasicRelationStats"
+                },
+                {
+                    "$ref": "#/definitions/RelationTypes"
+                }
+            ]
+        },
+        "RelationCount": {
+            "type": "object",
+            "properties": {
+                "relation_val": {
+                    "type": "string",
+                    "enum": [
+                        "FRIEND",
+                        "FB_FRIEND",
+                        "FOLLOW",
+                        "UNFOLLOW",
+                        "UNFRIEND",
+                        "FB_UNFRIEND"
+                    ]
+                },
+                "relation_count": {
+                    "type": "integer"
+                }
+            }
+        },
+        "RelationStatsCount": {
+            "type": "object",
+            "properties": {
+                "user_relations_count": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/RelationCount"
+                    }
+                },
+                "related_users_count": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/RelationCount"
+                    }
+                }
+            }
+        },
+        "RelationStatsResponse": {
+            "allOf": [
+                {
+                    "$ref": "#/definitions/RelationStatsCount"
+                },
+                {
+                    "$ref": "#/definitions/BasicRelationStats"
+                }
+            ]
+        },
+        "UpdateRelationRequest": {
+            "description": "This is request body to /update_relation/",
+            "type": "object",
+            "properties": {
+                "r_m_id": {
+                    "type": "integer"
+                },
+                "r_m_type": {
+                    "type": "string",
+                    "enum": [
+                        "USER",
+                        "MENTOR",
+                        "INVESTOR",
+                        "INCUBATOR",
+                        "FELLOW STARTUPS",
+                        "STARTUP SERVICES",
+                        "MICRO_STADIUM"
+                    ]
+                },
+                "m_id": {
+                    "type": "integer"
+                },
+                "m_type": {
+                    "type": "string",
+                    "enum": [
+                        "USER",
+                        "MENTOR",
+                        "INVESTOR",
+                        "INCUBATOR",
+                        "FELLOW STARTUPS",
+                        "STARTUP SERVICES",
+                        "MICRO_STADIUM"
+                    ]
+                },
+                "relation": {
+                    "type": "string",
+                    "enum": [
+                        "FRIEND",
+                        "FB_FRIEND",
+                        "FOLLOW",
+                        "UNFOLLOW",
+                        "UNFRIEND",
+                        "FB_UNFRIEND",
+                        "BLOCK",
+                        "UNBLOCK"
+                    ]
+                }
+            },
+            "required": [
+                "m_id",
+                "m_type",
+                "r_m_id",
+                "r_m_type",
+                "relation"
+            ]
+        },
+        "UpdateRelationStatusRequest": {
+            "description": "This is request body to /update_relation/",
+            "type": "object",
+            "properties": {
+                "r_m_id": {
+                    "type": "integer"
+                },
+                "r_m_type": {
+                    "type": "string",
+                    "enum": [
+                        "USER",
+                        "MENTOR",
+                        "INVESTOR",
+                        "INCUBATOR",
+                        "FELLOW STARTUPS",
+                        "STARTUP SERVICES"
+                    ]
+                },
+                "m_id": {
+                    "type": "integer"
+                },
+                "m_type": {
+                    "type": "string",
+                    "enum": [
+                        "USER",
+                        "MENTOR",
+                        "INVESTOR",
+                        "INCUBATOR",
+                        "FELLOW STARTUPS",
+                        "STARTUP SERVICES"
+                    ]
+                },
+                "relation": {
+                    "type": "string",
+                    "enum": [
+                        "FRIEND",
+                        "FB_FRIEND"
+                    ]
+                },
+                "status": {
+                    "type": "string",
+                    "enum": [
+                        "ACCEPT",
+                        "REJECT"
+                    ]
+                }
+            },
+            "required": [
+                "m_id",
+                "m_type",
+                "r_m_id",
+                "r_m_type",
+                "relation",
+                "status"
+            ]
+        },
+        "GetFriendsListRequest": {
+            "allOf": [
+                {
+                    "$ref": "#/definitions/Pagination"
+                },
+                {
+                    "$ref": "#/definitions/MemberBasicDetails"
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "search_q": {
+                            "type": "string"
+                        }
+                    }
+                }
+            ]
+        },
+        "GetFriendsListBulkRequest": {
+            "allOf": [
+                {
+                    "$ref": "#/definitions/Pagination"
+                },
+                {
+                    "$ref": "#/definitions/MemberBasicDetails"
+                }
+            ]
+        },
+        "MemberBasicDetails": {
+            "description": "This is request body to /update_relation/",
+            "type": "object",
+            "properties": {
+                "m_id": {
+                    "type": "integer"
+                },
+                "m_type": {
+                    "type": "string",
+                    "enum": [
+                        "USER",
+                        "MENTOR",
+                        "INVESTOR",
+                        "INCUBATOR",
+                        "FELLOW STARTUPS",
+                        "STARTUP SERVICES"
+                    ]
+                }
+            }
+        },
+        "Pagination": {
+            "description": "Pagination object",
+            "type": "object",
+            "properties": {
+                "offset": {
+                    "type": "integer"
+                },
+                "limit": {
+                    "type": "integer"
+                }
+            }
+        },
+        "GetFriendsListResponseDefinition": {
+            "type": "object",
+            "properties": {
+                "count": {
+                    "type": "integer"
+                },
+                "friends": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "user_id": {
+                                "type": "integer"
+                            },
+                            "user_name": {
+                                "type": "string"
+                            },
+                            "user_thumbnail": {
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "user_id",
+                            "user_name",
+                            "user_thumbnail"
+                        ]
+                    }
+                }
+            }
+        },
+        "GetFriendsListBulkResponseDefinition": {
+            "allOf": [
+                {
+                    "type": "object",
+                    "properties": {
+                        "user_id": {
+                            "type": "integer"
+                        }
+                    }
+                },
+                {
+                    "$ref": "#/definitions/GetFriendsListResponseDefinition"
+                }
+            ]
+        },
+        "RelationsResponse": {
+            "description": "This is /relations/ response object",
+            "type": "object",
+            "properties": {
+                "r_m_id": {
+                    "type": "integer"
+                },
+                "r_m_type": {
+                    "type": "string",
+                    "enum": [
+                        "USER",
+                        "MENTOR",
+                        "INVESTOR",
+                        "INCUBATOR",
+                        "FELLOW STARTUPS",
+                        "STARTUP SERVICES"
+                    ]
+                },
+                "relation": {
+                    "type": "string",
+                    "enum": [
+                        "FRIEND",
+                        "FB_FRIEND",
+                        "FOLLOW",
+                        "BLOCK"
+                    ]
+                },
+                "status": {
+                    "type": "string"
+                }
+            }
+        },
+        "InverseRelationsResponse": {
+            "description": "This is /relations/ response object",
+            "type": "object",
+            "properties": {
+                "m_id": {
+                    "type": "integer"
+                },
+                "m_type": {
+                    "type": "string",
+                    "enum": [
+                        "USER",
+                        "MENTOR",
+                        "INVESTOR",
+                        "INCUBATOR",
+                        "FELLOW STARTUPS",
+                        "STARTUP SERVICES"
+                    ]
+                },
+                "relation": {
+                    "type": "string",
+                    "enum": [
+                        "FRIEND",
+                        "FB_FRIEND",
+                        "FOLLOW",
+                        "BLOCK"
+                    ]
+                }
+            }
+        },
+        "RelationsRequest": {
+            "description": "This is /relations/ request object",
+            "type": "object",
+            "properties": {
+                "relation_types": {
+                    "description": "CHOICES: [ FRIEND, FB_FRIEND, FOLLOW ]",
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "enum": [
+                            "FRIEND",
+                            "FB_FRIEND",
+                            "FOLLOW"
+                        ]
+                    }
+                },
+                "m_id": {
+                    "type": "integer"
+                },
+                "m_type": {
+                    "type": "string",
+                    "enum": [
+                        "USER",
+                        "MENTOR",
+                        "INVESTOR",
+                        "INCUBATOR",
+                        "FELLOW STARTUPS",
+                        "STARTUP SERVICES"
+                    ]
+                },
+                "r_m_types": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "enum": [
+                            "USER",
+                            "MENTOR",
+                            "INVESTOR",
+                            "INCUBATOR",
+                            "FELLOW STARTUPS",
+                            "STARTUP SERVICES"
+                        ]
+                    }
+                }
+            }
+        },
+        "InverseRelationsRequest": {
+            "description": "This is /relations/ request object",
+            "type": "object",
+            "properties": {
+                "relation_types": {
+                    "description": "CHOICES: [ FRIEND, FB_FRIEND, FOLLOW ]",
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "enum": [
+                            "FRIEND",
+                            "FB_FRIEND",
+                            "FOLLOW"
+                        ]
+                    }
+                },
+                "r_m_id": {
+                    "type": "integer"
+                },
+                "r_m_type": {
+                    "type": "string",
+                    "enum": [
+                        "USER",
+                        "MENTOR",
+                        "INVESTOR",
+                        "INCUBATOR",
+                        "FELLOW STARTUPS",
+                        "STARTUP SERVICES"
+                    ]
+                },
+                "m_types": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "enum": [
+                            "USER",
+                            "MENTOR",
+                            "INVESTOR",
+                            "INCUBATOR",
+                            "FELLOW STARTUPS",
+                            "STARTUP SERVICES"
+                        ]
+                    }
+                },
+                "status": {
+                    "type": "string",
+                    "enum": [
+                        "ACCEPT",
+                        "PENDING",
+                        "REJECT"
+                    ]
+                }
+            }
+        },
+        "SuccessResponse": {
+            "description": "This is a success response",
+            "type": "object",
+            "properties": {
+                "response": {
+                    "type": "string"
+                }
+            }
+        },
+        "FriendsRelationsRequest": {
+            "description": "This is friends relation request object",
+            "type": "object",
+            "properties": {
+                "r_m_id": {
+                    "type": "integer"
+                },
+                "r_m_type": {
+                    "type": "string",
+                    "enum": [
+                        "USER",
+                        "MENTOR",
+                        "INVESTOR",
+                        "INCUBATOR",
+                        "FELLOW STARTUPS",
+                        "STARTUP SERVICES"
+                    ]
+                },
+                "offset": {
+                    "type": "integer"
+                },
+                "limit": {
+                    "type": "integer"
+                },
+                "relation": {
+                    "type": "string",
+                    "enum": [
+                        "FRIEND",
+                        "FB_FRIEND",
+                        "FOLLOW",
+                        "BLOCK"
+                    ]
+                }
+            }
+        },
+        "GetPendingRelationRequest": {
+            "description": "Get pending relation requests request object",
+            "type": "object",
+            "properties": {
+                "m_id": {
+                    "type": "integer"
+                },
+                "m_type": {
+                    "type": "string",
+                    "enum": [
+                        "USER",
+                        "MENTOR",
+                        "INVESTOR",
+                        "INCUBATOR",
+                        "FELLOW STARTUPS",
+                        "STARTUP SERVICES"
+                    ]
+                },
+                "offset": {
+                    "type": "integer"
+                },
+                "limit": {
+                    "type": "integer"
+                },
+                "relation_types": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "enum": [
+                            "FRIEND",
+                            "FB_FRIEND"
+                        ]
+                    }
+                }
+            }
+        },
+        "GetPendingRelationsSentRequest": {
+            "description": "Get pending relations sent request object",
+            "type": "object",
+            "properties": {
+                "m_id": {
+                    "type": "integer"
+                },
+                "m_type": {
+                    "type": "string",
+                    "enum": [
+                        "USER",
+                        "MENTOR",
+                        "INVESTOR",
+                        "INCUBATOR",
+                        "FELLOW STARTUPS",
+                        "STARTUP SERVICES"
+                    ]
+                },
+                "offset": {
+                    "type": "integer"
+                },
+                "limit": {
+                    "type": "integer"
+                },
+                "relation_types": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "enum": [
+                            "FRIEND",
+                            "FB_FRIEND"
+                        ]
+                    }
+                }
+            }
+        },
+        "SocialProvider": {
+            "type": "object",
+            "properties": {
+                "social_provider": {
+                    "type": "string",
+                    "enum": [
+                        "facebook",
+                        "twitter",
+                        "google",
+                        "linkedin",
+                        "instagram"
+                    ]
+                }
+            }
+        },
+        "SocialUser": {
+            "allOf": [
+                {
+                    "$ref": "#/definitions/SocialProvider"
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "user_id": {
+                            "type": "integer"
+                        },
+                        "social_id": {
+                            "type": "string"
+                        },
+                        "social_name": {
+                            "type": "string"
+                        }
+                    }
+                }
+            ]
+        },
+        "SocialUserRequest": {
+            "allOf": [
+                {
+                    "$ref": "#/definitions/SocialProvider"
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "social_token": {
+                            "type": "string"
+                        },
+                        "social_access_token_secret": {
+                            "type": "string"
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    "parameters": {
+        "User": {
+            "description": "User Parameter",
+            "in": "body",
+            "name": "user",
+            "required": true,
+            "schema": {
+                "$ref": "#/definitions/User"
+            }
+        },
+        "UpdateRelationParameter": {
+            "description": "Update Relation Parameter",
+            "in": "body",
+            "name": "update_relation",
+            "required": true,
+            "schema": {
+                "$ref": "#/definitions/UpdateRelationRequest"
+            }
+        },
+        "UpdateRelationStatusParameter": {
+            "description": "Update Relation Parameter",
+            "in": "body",
+            "name": "update_relation_status",
+            "required": true,
+            "schema": {
+                "$ref": "#/definitions/UpdateRelationStatusRequest"
+            }
+        },
+        "GetFriendsListParameter": {
+            "description": "Get Friends List Parameter",
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+                "$ref": "#/definitions/GetFriendsListRequest"
+            }
+        },
+        "GetFriendsListBulkParameter": {
+            "description": "Get Friends List Parameter",
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/GetFriendsListRequest"
+                }
+            }
+        },
+        "RelationStatsParameter": {
+            "description": "Get Friends List Parameter",
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/RelationStatsRequest"
+                }
+            }
+        },
+        "RelationParameter": {
+            "description": "Relation Parameter",
+            "in": "body",
+            "name": "relation",
+            "required": true,
+            "schema": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "r_m_id": {
+                            "type": "integer"
+                        },
+                        "r_m_type": {
+                            "type": "string",
+                            "enum": [
+                                "USER",
+                                "MENTOR",
+                                "INVESTOR",
+                                "INCUBATOR",
+                                "FELLOW STARTUPS",
+                                "STARTUP SERVICES"
+                            ]
+                        },
+                        "m_id": {
+                            "type": "integer"
+                        },
+                        "m_type": {
+                            "type": "string",
+                            "enum": [
+                                "USER",
+                                "MENTOR",
+                                "INVESTOR",
+                                "INCUBATOR",
+                                "FELLOW STARTUPS",
+                                "STARTUP SERVICES"
+                            ]
+                        },
+                        "relation": {
+                            "type": "string",
+                            "enum": [
+                                "FRIEND",
+                                "FB_FRIEND",
+                                "FOLLOW",
+                                "BLOCK"
+                            ]
+                        },
+                        "unique_key": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "RelationsParameter": {
+            "description": "Relations Parameter",
+            "in": "body",
+            "name": "relation_types",
+            "required": true,
+            "schema": {
+                "$ref": "#/definitions/RelationsRequest"
+            }
+        },
+        "InverseRelationsParameter": {
+            "description": "Relations Parameter",
+            "in": "body",
+            "name": "relation_types",
+            "required": true,
+            "schema": {
+                "$ref": "#/definitions/InverseRelationsRequest"
+            }
+        },
+        "FriendsRelationsParameter": {
+            "description": "Friends Relations Parameter",
+            "in": "body",
+            "name": "friends_relation",
+            "required": true,
+            "schema": {
+                "$ref": "#/definitions/FriendsRelationsRequest"
+            }
+        },
+        "UserName": {
+            "description": "username of the user description",
+            "in": "path",
+            "name": "username",
+            "required": true,
+            "type": "string"
+        },
+        "GetPendingRelationRequestParameter": {
+            "description": "Friends Relations Requests Parameter",
+            "in": "body",
+            "name": "pending_requests",
+            "required": true,
+            "schema": {
+                "$ref": "#/definitions/GetPendingRelationRequest"
+            }
+        },
+        "GetPendingRelationsSentParameter": {
+            "description": "Friends Relations sent Parameter",
+            "in": "body",
+            "name": "pending_requests_sent",
+            "required": true,
+            "schema": {
+                "$ref": "#/definitions/GetPendingRelationsSentRequest"
+            }
+        },
+        "SocialAccountLinkRequest": {
+            "description": "link social user account",
+            "in": "body",
+            "name": "social_user_link_request",
+            "required": true,
+            "schema": {
+                "$ref": "#/definitions/SocialUserRequest"
+            }
+        },
+        "SocialAccountDelinkRequest": {
+            "description": "link social user account",
+            "in": "body",
+            "name": "social_user_link_request",
+            "required": true,
+            "schema": {
+                "$ref": "#/definitions/SocialProvider"
+            }
+        }
+    },
+    "responses": {
+        "GeneralError": {
+            "description": "General Error",
+            "schema": {
+                "$ref": "#/definitions/GeneralError"
+            }
+        },
+        "UpdateRelationResponse": {
+            "description": "response for update relation api",
+            "schema": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "relation": {
+                            "type": "string"
+                        },
+                        "status": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "RelationStatsResponse": {
+            "description": "Relation response object",
+            "schema": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/RelationStatsResponse"
+                }
+            }
+        },
+        "RelationsResponse": {
+            "description": "Relation response object",
+            "schema": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/RelationsResponse"
+                }
+            }
+        },
+        "InverseRelationsResponse": {
+            "description": "Relation response object",
+            "schema": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/InverseRelationsResponse"
+                }
+            }
+        },
+        "RelationResponse": {
+            "description": "Relation response object",
+            "schema": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "is_related": {
+                            "type": "boolean"
+                        },
+                        "status": {
+                            "type": "string"
+                        },
+                        "unique_key": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "is_related",
+                        "unique_key"
+                    ]
+                }
+            }
+        },
+        "GetFriendsListResponse": {
+            "description": "Relation response object",
+            "schema": {
+                "$ref": "#/definitions/GetFriendsListResponseDefinition"
+            }
+        },
+        "GetFriendsListBulkResponse": {
+            "description": "Relation response object",
+            "schema": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/GetFriendsListBulkResponseDefinition"
+                }
+            }
+        },
+        "GeneralResponse": {
+            "description": "General Error",
+            "schema": {
+                "$ref": "#/definitions/SuccessResponse"
+            }
+        },
+        "FriendsRelationsResponse": {
+            "description": "Friends relation response object",
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "member_friends_count": {
+                        "type": "integer"
+                    },
+                    "total_relation_count": {
+                        "type": "integer"
+                    },
+                    "has_relation": {
+                        "type": "boolean"
+                    },
+                    "friends": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "user_id": {
+                                    "type": "integer"
+                                },
+                                "user_name": {
+                                    "type": "string"
+                                },
+                                "user_thumbnail": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "user_id",
+                                "user_name",
+                                "user_thumbnail"
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "SocialUser": {
+            "description": "Social network details of user",
+            "schema": {
+                "$ref": "#/definitions/SocialUser"
+            }
+        }
+    }
+}

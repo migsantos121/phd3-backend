@@ -1,0 +1,12 @@
+
+
+REQUEST_BODY_JSON = """
+{
+    "content": "string", 
+    "multimedia_url": "string", 
+    "multimedia_type": "IMAGE", 
+    "article_id": 1
+}
+"""
+
+

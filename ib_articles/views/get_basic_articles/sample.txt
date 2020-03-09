@@ -1,0 +1,24 @@
+
+
+REQUEST_BODY_JSON = """
+{
+    "sorts": {
+        "posted_date": "string", 
+        "published_time": "string"
+    }, 
+    "published_time": {
+        "start_date_time": "string", 
+        "end_date_time": "string"
+    }, 
+    "article_ids": [
+        1, 
+        1
+    ]
+}
+"""
+
+
+RESPONSE_200_JSON = """
+[{"published_time": "string", "title": "string", "url": "string", "image": "string", "tags": "string", "author_name": "string", "summary": "string"}, {"published_time": "string", "title": "string", "url": "string", "image": "string", "tags": "string", "author_name": "string", "summary": "string"}]
+"""
+

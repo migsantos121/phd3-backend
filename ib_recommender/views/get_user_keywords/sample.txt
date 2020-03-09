@@ -1,0 +1,13 @@
+
+
+REQUEST_BODY_JSON = """
+{
+    "is_blocked": true
+}
+"""
+
+
+RESPONSE_200_JSON = """
+[{"keyword_id": 1, "keyword": "string"}, {"keyword_id": 1, "keyword": "string"}]
+"""
+

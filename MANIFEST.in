@@ -1,0 +1,3 @@
+include HISTORY.rst
+include README.md
+recursive-include phd3 *.html *.png *.gif *js *.css *jpg *jpeg *svg *py *json

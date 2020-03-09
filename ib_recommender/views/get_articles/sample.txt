@@ -1,0 +1,20 @@
+
+
+REQUEST_BODY_JSON = """
+{
+    "keyword_ids": [
+        1, 
+        1
+    ], 
+    "category_ids": [
+        1, 
+        1
+    ]
+}
+"""
+
+
+RESPONSE_200_JSON = """
+[{"cluster_ids": [{"article_id": 1}, {"article_id": 1}], "article_id": 1}, {"cluster_ids": [{"article_id": 1}, {"article_id": 1}], "article_id": 1}]
+"""
+

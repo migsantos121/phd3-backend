@@ -1,0 +1,843 @@
+{
+  "basePath": "/api/ib_articles/",
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "security": [
+  ],
+  "schemes": [
+    "http"
+  ],
+  "securityDefinitions": {
+    "oauth": {
+      "tokenUrl": "http://auth.ibtspl.com/oauth2/",
+      "flow": "password",
+      "scopes": {
+        "read": "read users",
+        "write": "create users",
+        "update": "update users",
+        "delete": "delete users"
+      },
+      "type": "oauth2"
+    }
+  },
+  "swagger": "2.0",
+  "tags": [
+    {
+      "description": "Operations about user",
+      "externalDocs": {
+        "description": "Find out more about our store",
+        "url": "http://swagger.io"
+      },
+      "name": "user"
+    }
+  ],
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://127.0.0.1:8000/api"
+  },
+  "host": "127.0.0.1:8000",
+  "info": {
+    "contact": {
+      "email": "tech@ibtspl.com"
+    },
+    "description": "This is a sample description",
+    "termsOfService": "http://ibtpsl.com",
+    "title": "Ib Service",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/article/{article_id}/": {
+      "parameters": [
+        {
+          "$ref": "#/parameters/ArticleId"
+        }
+      ],
+      "get": {
+        "security": [
+          {
+            "oauth": [
+              "read"
+            ]
+          }
+        ],
+        "tags": [
+          "articles"
+        ],
+        "summary": "get article",
+        "operationId": "get_article",
+        "responses": {
+          "200": {
+            "$ref": "#/responses/Article"
+          }
+        }
+      },
+      "post": {
+        "security": [
+          {
+            "oauth": [
+              "write"
+            ]
+          }
+        ],
+        "tags": [
+          "articles"
+        ],
+        "summary": "update article",
+        "operationId": "update_article",
+        "parameters": [
+          {
+            "$ref": "#/parameters/UpdateArticleRequest"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "update article 200 OK response"
+          }
+        }
+      },
+      "delete": {
+        "security": [
+          {
+            "oauth": [
+              "write"
+            ]
+          }
+        ],
+        "summary": "delete article",
+        "operationId": "delete_article",
+        "responses": {
+          "200": {
+            "description": "delete 200 OK response"
+          }
+        },
+        "tags": [
+          "article"
+        ]
+      }
+    },
+    "/article/articles/": {
+      "post": {
+        "security": [
+          {
+            "oauth": [
+              "read"
+            ]
+          }
+        ],
+        "summary": "get articles",
+        "operationId": "get_articles",
+        "parameters": [
+          {
+            "$ref": "#/parameters/PaginationRequest"
+          }
+        ],
+        "tags": [
+          "articles"
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/responses/Articles"
+          }
+        }
+      }
+    },
+    "/article/add_article/": {
+      "post": {
+        "security": [
+          {
+            "oauth": [
+              "write"
+            ]
+          }
+        ],
+        "summary": "add new article",
+        "operationId": "add_article",
+        "parameters": [
+          {
+            "$ref": "#/parameters/ArticleRequest"
+          }
+        ],
+        "tags": [
+          "articles"
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/responses/ArticleId"
+          }
+        }
+      }
+    },
+    "/article/get_article_by_ids/": {
+      "post": {
+        "security": [
+          {
+            "oauth": [
+              "write"
+            ]
+          }
+        ],
+        "summary": "get articles by article ids",
+        "operationId": "get_article_by_ids",
+        "parameters": [
+          {
+            "$ref": "#/parameters/PaginationRequest"
+          }
+        ],
+        "tags": [
+          "articles"
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/responses/Articles"
+          }
+        }
+      }
+    },
+    "/article/keyword_maps/": {
+      "post": {
+        "security": [
+          {
+            "oauth": [
+              "read"
+            ]
+          }
+        ],
+        "summary": "get articles keyword maps",
+        "operationId": "get_article_keyword_maps",
+        "parameters": [
+          {
+            "$ref": "#/parameters/ArticleKeywordRequest"
+          }
+        ],
+        "tags": [
+          "articles"
+        ],
+        "responses": {
+          "200": {
+            "description": "some description",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/KeywordMap"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/article/basic/": {
+      "post": {
+        "security": [
+          {
+            "oauth": [
+              "read"
+            ]
+          }
+        ],
+        "summary": "get basic articles",
+        "operationId": "get_basic_articles",
+        "parameters": [
+          {
+            "$ref": "#/parameters/BaseArticlesRequest"
+          }
+        ],
+        "tags": [
+          "articles"
+        ],
+        "responses": {
+          "200": {
+            "description": "some description",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/BaseArticle"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/keywords/": {
+      "post": {
+        "security": [
+          {
+            "oauth": [
+              "read"
+            ]
+          }
+        ],
+        "summary": "get keywords",
+        "operationId": "get_keywords",
+        "parameters": [
+          {
+            "$ref": "#/parameters/KeywordSearchRequest"
+          }
+        ],
+        "tags": [
+          "keywords"
+        ],
+        "responses": {
+          "200": {
+            "description": "some description",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Keyword"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/keywords/add_keywords/": {
+      "post": {
+        "security": [
+          {
+            "oauth": [
+              "read",
+              "write"
+            ]
+          }
+        ],
+        "summary": "add keywords",
+        "operationId": "add_keywords",
+        "parameters": [
+          {
+            "$ref": "#/parameters/AddKeywordsRequest"
+          }
+        ],
+        "tags": [
+          "keywords"
+        ],
+        "responses": {
+          "200": {
+            "description": "some description",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Keyword"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/news_sources/": {
+      "post": {
+        "security": [
+          {
+            "oauth": [
+              "write"
+            ]
+          }
+        ],
+        "summary": "add new news_source",
+        "operationId": "add_news_source",
+        "parameters": [
+          {
+            "$ref": "#/parameters/NewsSourceRequest"
+          }
+        ],
+        "tags": [
+          "news_source"
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/responses/NewsSourceId"
+          }
+        }
+      }
+    },
+    "/articles/url/": {
+      "post": {
+        "security": [
+          {
+            "oauth": [
+              "read"
+            ]
+          }
+        ],
+        "summary": "get article by url",
+        "operationId": "get_article_by_url",
+        "parameters": [
+          {
+            "$ref": "#/parameters/ArticleURLRequest"
+          }
+        ],
+        "tags": [
+          "articles"
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/responses/Articles"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "GeneralError": {
+      "type": "object",
+      "properties": {
+        "error_code": {
+          "type": "integer"
+        },
+        "error_remarks": {
+          "type": "string"
+        }
+      }
+    },
+    "KeywordGroup": {
+      "type": "object",
+      "properties": {
+        "group": {
+          "type": "string"
+        },
+        "sub_group": {
+          "type": "string"
+        },
+        "group_weight": {
+          "type": "number"
+        }
+      }
+    },
+    "KeywordMap": {
+      "type": "object",
+      "properties": {
+        "keyword_id": {
+          "type": "integer"
+        },
+        "article_id": {
+          "type": "integer"
+        },
+        "relevance": {
+          "type": "number"
+        },
+        "keyword_group": {
+          "$ref": "#/definitions/KeywordGroup"
+        }
+      }
+    },
+    "SearchQ": {
+      "type": "object",
+      "properties": {
+        "search_q": {
+          "type": "string"
+        }
+      }
+    },
+    "KeywordSearchRequest": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/SearchQ"
+        },
+        {
+          "$ref": "#/definitions/OffsetLimit"
+        },
+        {
+          "$ref": "#/definitions/ArticleKeywordRequest"
+        }
+      ]
+    },
+    "ArticleKeywordRequest": {
+      "type": "object",
+      "properties": {
+        "keyword_ids": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
+        }
+      }
+    },
+    "Keyword": {
+      "type": "object",
+      "properties": {
+        "keyword_id": {
+          "type": "integer"
+        },
+        "keyword": {
+          "type": "string"
+        }
+      }
+    },
+    "NewsSource": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        }
+      }
+    },
+    "NewsSourceId": {
+      "type": "object",
+      "properties": {
+        "news_source_id": {
+          "type": "integer"
+        }
+      }
+    },
+    "Article": {
+      "allOf": [
+        {
+          "type": "object",
+          "properties": {
+            "keywords": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Keyword"
+              }
+            },
+            "news_source": {
+              "$ref": "#/definitions/NewsSource"
+            }
+          }
+        },
+        {
+          "$ref": "#/definitions/BaseArticle"
+        },
+        {
+          "$ref": "#/definitions/ArticleId"
+        }
+      ]
+    },
+    "AddArticle": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BaseArticle"
+        },
+        {
+          "$ref": "#/definitions/NewsSourceId"
+        }
+      ]
+    },
+    "BaseArticle": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "summary": {
+          "type": "string"
+        },
+        "author_name": {
+          "type": "string"
+        },
+        "published_time": {
+          "type": "string"
+        },
+        "tags": {
+          "type": "string"
+        },
+        "image": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "title",
+        "summary",
+        "published_time",
+        "author_name"
+      ]
+    },
+    "BaseUpdateArticle": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "summary": {
+          "type": "string"
+        },
+        "author_name": {
+          "type": "string"
+        },
+        "published_time": {
+          "type": "string"
+        },
+        "tags": {
+          "type": "string"
+        },
+        "image": {
+          "type": "string"
+        }
+      }
+    },
+    "UpdateArticle": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BaseUpdateArticle"
+        },
+        {
+          "$ref": "#/definitions/NewsSourceId"
+        },
+        {
+          "$ref": "#/definitions/ArticleId"
+        }
+      ]
+    },
+    "ArticleId": {
+      "type": "object",
+      "properties": {
+        "article_id": {
+          "type": "integer"
+        }
+      }
+    },
+    "ArticleURL": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string"
+        }
+      }
+    },
+    "ArticlesResponse": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "integer"
+        },
+        "articles": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Article"
+          }
+        }
+      }
+    },
+    "OffsetLimit": {
+      "type": "object",
+      "properties": {
+        "offset": {
+          "type": "integer"
+        },
+        "limit": {
+          "type": "integer"
+        }
+      }
+    },
+
+    "PaginationRequest": {
+      "type": "object",
+      "properties": {
+        "offset": {
+          "type": "integer"
+        },
+        "limit": {
+          "type": "integer"
+        },
+        "search_q": {
+          "type": "string"
+        },
+        "filters": {
+          "$ref": "#/definitions/Filters"
+        }
+      }
+    },
+    "DateRange": {
+      "type": "object",
+      "properties": {
+        "start_date_time": {
+          "type": "string"
+        },
+        "end_date_time": {
+          "type": "string"
+        }
+      }
+    },
+    "Filters": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/Sorting"
+        },
+        {
+          "type": "object",
+          "description": "Event Schedule Request",
+          "properties": {
+            "article_ids": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "properties": {
+            "published_time": {
+              "$ref": "#/definitions/DateRange"
+            }
+          }
+        }
+      ]
+    },
+    "Sorting": {
+      "type": "object",
+      "properties": {
+        "sorts": {
+          "$ref": "#/definitions/SortingFields"
+        }
+      }
+    },
+    "SortingFields": {
+      "type": "object",
+      "properties": {
+        "published_time": {
+          "type": "string"
+        },
+        "posted_date": {
+          "type": "string"
+        }
+      }
+    },
+    "AddKeyword": {
+      "type": "object",
+      "properties": {
+        "keyword": {
+          "type": "string"
+        },
+        "group_id": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "keyword",
+        "group_id"
+      ]
+    }
+  },
+  "parameters": {
+    "ArticleRequest": {
+      "description": "article request",
+      "in": "body",
+      "name": "ArticleRequests",
+      "schema": {
+        "$ref": "#/definitions/AddArticle"
+      }
+    },
+    "NewsSourceRequest": {
+      "description": "news source request",
+      "in": "body",
+      "name": "NewsSourceRequests",
+      "schema": {
+        "$ref": "#/definitions/NewsSource"
+      }
+    },
+    "ArticleURLRequest": {
+      "description": "news source request",
+      "in": "body",
+      "name": "NewsSourceRequests",
+      "schema": {
+        "$ref": "#/definitions/ArticleURL"
+      }
+    },
+    "UpdateArticleRequest": {
+      "description": "article request",
+      "in": "body",
+      "name": "ArticleRequests",
+      "schema": {
+        "$ref": "#/definitions/UpdateArticle"
+      }
+    },
+    "PaginationRequest": {
+      "description": "pagination request",
+      "in": "body",
+      "name": "PaginationRequests",
+      "schema": {
+        "$ref": "#/definitions/PaginationRequest"
+      }
+    },
+    "ArticleKeywordRequest": {
+      "description": "article keywords request",
+      "in": "body",
+      "name": "articlekeywordsRequests",
+      "schema": {
+        "$ref": "#/definitions/ArticleKeywordRequest"
+      }
+    },
+    "KeywordSearchRequest": {
+      "description": "article keywords request",
+      "in": "body",
+      "name": "articlekeywordsRequests",
+      "schema": {
+        "$ref": "#/definitions/KeywordSearchRequest"
+      }
+    },
+    "BaseArticlesRequest": {
+      "description": "base article request",
+      "in": "body",
+      "name": "basearticlesRequests",
+      "schema": {
+        "$ref": "#/definitions/Filters"
+      }
+    },
+    "ArticleId": {
+      "description": "article id",
+      "in": "path",
+      "name": "article_id",
+      "required": true,
+      "type": "integer"
+    },
+    "AddKeywordsRequest": {
+      "description": "add keywords request",
+      "in": "body",
+      "name": "addkeywordsRequests",
+      "schema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/definitions/AddKeyword"
+        }
+      }
+    }
+  },
+  "responses": {
+    "GeneralError": {
+      "description": "General Error",
+      "schema": {
+        "$ref": "#/definitions/GeneralError"
+      }
+    },
+    "Article": {
+      "description": "Single Article",
+      "schema": {
+        "$ref": "#/definitions/Article"
+      }
+    },
+    "Articles": {
+      "description": "List of Articles",
+      "schema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/definitions/Article"
+        }
+      }
+    },
+    "ArticleId": {
+      "description": "Articles",
+      "schema": {
+        "$ref": "#/definitions/ArticleId"
+      }
+    },
+    "NewsSourceId": {
+      "description": "NewsSources",
+      "schema": {
+        "$ref": "#/definitions/NewsSourceId"
+      }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+
+
+REQUEST_BODY_JSON = """
+{
+    "keyword_ids": [
+        1, 
+        1
+    ]
+}
+"""
+
+

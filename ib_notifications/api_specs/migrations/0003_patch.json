@@ -1,0 +1,1 @@
+[{"path": "/paths/~1notifications~1deactivate~1/post/operationId", "value": "deactivate_user__tokens_api", "op": "replace"}, {"path": "/definitions/NotificationRequest/properties/push_notification_type", "value": {"type": "string"}, "op": "add"}]

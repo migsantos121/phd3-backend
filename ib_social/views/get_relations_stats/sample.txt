@@ -1,0 +1,28 @@
+
+
+REQUEST_BODY_JSON = """
+[
+    {
+        "m_id": 1, 
+        "relation_types": [
+            "FRIEND", 
+            "FRIEND"
+        ], 
+        "m_type": "USER"
+    }, 
+    {
+        "m_id": 1, 
+        "relation_types": [
+            "FRIEND", 
+            "FRIEND"
+        ], 
+        "m_type": "USER"
+    }
+]
+"""
+
+
+RESPONSE_200_JSON = """
+[{"m_id": 1, "related_users_count": [{"relation_val": "FRIEND", "relation_count": 1}, {"relation_val": "FRIEND", "relation_count": 1}], "m_type": "USER", "user_relations_count": [{"relation_val": "FRIEND", "relation_count": 1}, {"relation_val": "FRIEND", "relation_count": 1}]}, {"m_id": 1, "related_users_count": [{"relation_val": "FRIEND", "relation_count": 1}, {"relation_val": "FRIEND", "relation_count": 1}], "m_type": "USER", "user_relations_count": [{"relation_val": "FRIEND", "relation_count": 1}, {"relation_val": "FRIEND", "relation_count": 1}]}]
+"""
+

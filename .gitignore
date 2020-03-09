@@ -1,0 +1,45 @@
+# Pycharm
+.idea/
+.ipynb_checkpoints/
+
+# Vimg
+
+*~
+*.swp
+*.swo
+
+app.yaml
+
+env/
+lib/
+env_*
+
+# Basics
+*.pyc
+__pycache__
+# *.ipynb
+
+# Eclipse
+.project
+.pydevproject
+android_jars/
+.venv/
+
+.coverage
+ipython/
+
+
+media/
+
+mysite.log
+db.sqlite3
+*.ipynb
+
+*.fuse*
+virtual_environment/
+
+# Build Folders
+*/build/*
+
+# Docs Folders
+docs/*

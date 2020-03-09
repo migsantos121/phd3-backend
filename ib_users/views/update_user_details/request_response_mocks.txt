@@ -1,0 +1,21 @@
+
+
+REQUEST_BODY_JSON = """
+{
+    "source": "string", 
+    "user_details": [
+        {
+            "ud_value": "string", 
+            "ud_key": "string"
+        }
+    ]
+}
+"""
+
+
+RESPONSE_200_JSON = """
+{
+    "res_status": "string"
+}
+"""
+

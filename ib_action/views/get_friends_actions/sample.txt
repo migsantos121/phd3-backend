@@ -1,0 +1,20 @@
+
+
+REQUEST_BODY_JSON = """
+{
+    "entity_id": 1, 
+    "user_id": 1, 
+    "entity_type": "string", 
+    "user_type": "string", 
+    "source": "string", 
+    "limit": 1, 
+    "action_type": "string", 
+    "offset": 1
+}
+"""
+
+
+RESPONSE_200_JSON = """
+{"count": 1, "friends_actions": [{"action_value": "string", "user_id": 1, "user_name": "string", "user_thumbnail": "string"}, {"action_value": "string", "user_id": 1, "user_name": "string", "user_thumbnail": "string"}]}
+"""
+

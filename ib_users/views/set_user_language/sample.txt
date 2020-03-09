@@ -1,0 +1,13 @@
+
+
+REQUEST_BODY_JSON = """
+{
+    "language": "string"
+}
+"""
+
+
+RESPONSE_200_JSON = """
+{"success": true}
+"""
+

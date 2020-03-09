@@ -1,0 +1,25 @@
+
+
+REQUEST_BODY_JSON = """
+{
+    "action_types": [
+        "RATE", 
+        "RATE"
+    ], 
+    "source": "string", 
+    "action_values": [
+        "string", 
+        "string"
+    ], 
+    "entity_types": [
+        "string", 
+        "string"
+    ]
+}
+"""
+
+
+RESPONSE_200_JSON = """
+[{"action_value": "string", "entity_count": 1, "action_type": "RATE", "entity_type": "string"}, {"action_value": "string", "entity_count": 1, "action_type": "RATE", "entity_type": "string"}]
+"""
+

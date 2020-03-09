@@ -1,0 +1,31 @@
+
+
+REQUEST_BODY_JSON = """
+{
+    "action_types": [
+        "RATE", 
+        "RATE"
+    ], 
+    "entities": [
+        {
+            "entity_id": 1, 
+            "entity_type": "string"
+        }, 
+        {
+            "entity_id": 1, 
+            "entity_type": "string"
+        }
+    ], 
+    "user_ids": [
+        1, 
+        1
+    ], 
+    "source": "string"
+}
+"""
+
+
+RESPONSE_200_JSON = """
+[{"subscribe_summary": {"positive": 1}, "entity_id": 1, "favourite_summary": {"positive": 1}, "entity_type": "string", "helpful_summary": {"positive": 1}, "vote_summary": {"positive": 1, "negative": 1}, "attend_summary": {"positive": 1}, "save_status_summary": {"completed": 1, "saved": 1}, "report_summary": {"positive": 1}, "rating_summary": [{"r_count": 1, "r_value": 1}, {"r_count": 1, "r_value": 1}], "share_summary": {"positive": 1}, "users_actions_summaries": [{"user_actions": [{"action_value": "string", "action_type": "string"}, {"action_value": "string", "action_type": "string"}], "user_id": 1}, {"user_actions": [{"action_value": "string", "action_type": "string"}, {"action_value": "string", "action_type": "string"}], "user_id": 1}], "follow_summary": {"positive": 1}, "bookmark_summary": {"positive": 1}, "book_status_summary": {"read": 1, "want_to_read": 1, "started_reading": 1}, "like_summary": {"positive": 1, "negative": 1}, "love_summary": {"positive": 1}}, {"subscribe_summary": {"positive": 1}, "entity_id": 1, "favourite_summary": {"positive": 1}, "entity_type": "string", "helpful_summary": {"positive": 1}, "vote_summary": {"positive": 1, "negative": 1}, "attend_summary": {"positive": 1}, "save_status_summary": {"completed": 1, "saved": 1}, "report_summary": {"positive": 1}, "rating_summary": [{"r_count": 1, "r_value": 1}, {"r_count": 1, "r_value": 1}], "share_summary": {"positive": 1}, "users_actions_summaries": [{"user_actions": [{"action_value": "string", "action_type": "string"}, {"action_value": "string", "action_type": "string"}], "user_id": 1}, {"user_actions": [{"action_value": "string", "action_type": "string"}, {"action_value": "string", "action_type": "string"}], "user_id": 1}], "follow_summary": {"positive": 1}, "bookmark_summary": {"positive": 1}, "book_status_summary": {"read": 1, "want_to_read": 1, "started_reading": 1}, "like_summary": {"positive": 1, "negative": 1}, "love_summary": {"positive": 1}}]
+"""
+

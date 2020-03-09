@@ -1,0 +1,2 @@
+class CMTokenIsNull(Exception):
+    pass

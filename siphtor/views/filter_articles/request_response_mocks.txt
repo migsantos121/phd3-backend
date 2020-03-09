@@ -1,0 +1,56 @@
+
+
+REQUEST_BODY_JSON = """
+{
+    "search_q": "string", 
+    "limit": 1, 
+    "is_shared": true, 
+    "offset": 1, 
+    "is_liked": true, 
+    "is_bookmarked": true
+}
+"""
+
+
+RESPONSE_200_JSON = """
+[
+    {
+        "published_time": "string", 
+        "tags": "string", 
+        "url": "string", 
+        "image": "string", 
+        "title": "string", 
+        "author_name": "string", 
+        "summary": "string", 
+        "keywords": [
+            {
+                "keyword_id": 1, 
+                "keyword": "string"
+            }
+        ], 
+        "news_source": {
+            "url": "string", 
+            "name": "string"
+        }, 
+        "article_id": 1, 
+        "action_summary": {
+            "is_shared": true, 
+            "is_liked": true, 
+            "is_disliked": true, 
+            "is_bookmarked": true, 
+            "share_summary": {
+                "positive": 1
+            }, 
+            "comments_count": 1, 
+            "like_summary": {
+                "positive": 1, 
+                "negative": 1
+            }, 
+            "bookmark_summary": {
+                "positive": 1
+            }
+        }
+    }
+]
+"""
+

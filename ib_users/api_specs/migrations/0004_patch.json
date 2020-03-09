@@ -1,0 +1,1 @@
+[{"path": "/definitions/ResendOTPRequestDefinition/allOf/3", "value": {"type": "object", "properties": {"phone_number": {"type": "string"}, "email": {"type": "string"}, "country_code": {"type": "string"}}}, "op": "add"}]

@@ -1,0 +1,30 @@
+
+
+REQUEST_BODY_JSON = """
+{
+    "username": "string", 
+    "phone_number": "string", 
+    "country_code": "string", 
+    "auth_type": "string", 
+    "token": "string", 
+    "client_id": "string", 
+    "client_secret": "string", 
+    "password": "string", 
+    "email": "string"
+}
+"""
+
+
+RESPONSE_200_JSON = """
+{
+    "success": true
+}
+"""
+
+RESPONSE_400_JSON = """
+{
+    "error_code": 1, 
+    "error_remarks": "string"
+}
+"""
+

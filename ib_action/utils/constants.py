@@ -1,0 +1,26 @@
+"""
+action values:
+
+
+"WANT_TO_READ",
+"VOTE",
+"UPVOTE",
+"SUBSCRIBE",
+"STARTED_READING",
+"SHARE",
+"REPORT",
+"READ",
+"RATE",
+"LOVE",
+"LIKE",
+"HELPFUL",
+"FOLLOW",
+"FAVOURITE",
+"DOWNVOTE",
+"DISLIKE",
+"BOOKMARK",
+"BOOK_STATUS",
+"ATTEND",
+
+
+"""

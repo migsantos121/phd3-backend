@@ -1,0 +1,1 @@
+[{"path": "/parameters/DeactivateUserAccessTokensAPIRequest/schema/properties/cm_token", "value": {"type": "string"}, "op": "add"}, {"path": "/parameters/DeactivateUserAccessTokensAPIRequest/schema/properties/device_id", "value": {"type": "string"}, "op": "add"}]

@@ -1,0 +1,34 @@
+
+
+REQUEST_BODY_JSON = """
+{
+    "url": "string"
+}
+"""
+
+
+RESPONSE_200_JSON = """
+[
+    {
+        "news_source": {
+            "url": "string", 
+            "name": "string"
+        }, 
+        "title": "string", 
+        "url": "string", 
+        "image": "string", 
+        "tags": "string", 
+        "author_name": "string", 
+        "summary": "string", 
+        "keywords": [
+            {
+                "keyword_id": 1, 
+                "keyword": "string"
+            }
+        ], 
+        "published_time": "string", 
+        "article_id": 1
+    }
+]
+"""
+

@@ -1,0 +1,11 @@
+
+
+
+RESPONSE_200_JSON = """
+{
+    "languages": [
+        "string"
+    ]
+}
+"""
+

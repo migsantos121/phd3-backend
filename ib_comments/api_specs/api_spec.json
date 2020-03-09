@@ -1,0 +1,492 @@
+{
+    "basePath": "/api/ib_comments/",
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "security": [
+        {
+            "oauth": [
+                "read",
+                "write"
+            ]
+        }
+    ],
+    "definitions": {
+        "Comment": {
+            "type": "object",
+            "properties": {
+                "entity_id": {
+                    "type": "integer"
+                },
+                "entity_type": {
+                    "type": "string"
+                },
+                "comment_id": {
+                    "type": "integer"
+                },
+                "comment": {
+                    "type": "string"
+                },
+                "up_votes": {
+                    "type": "integer"
+                },
+                "down_votes": {
+                    "type": "integer"
+                },
+                "multimedia_url": {
+                    "type": "string"
+                },
+                "multimedia_type": {
+                    "type": "string"
+                },
+                "user_id": {
+                    "type": "integer"
+                },
+                "username": {
+                    "type": "string"
+                },
+                "user_thumbnail_url": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "entity_id",
+                "entity_type",
+                "comment_id",
+                "comment",
+                "up_votes",
+                "down_votes",
+                "multimedia_url",
+                "multimedia_type",
+                "user_id",
+                "username",
+                "user_thumbnail_url"
+            ]
+        },
+        "ListOfComment": {
+            "type": "object",
+            "properties": {
+                "entity_id": {
+                    "type": "integer"
+                },
+                "entity_type": {
+                    "type": "string"
+                },
+                "total":{
+                    "type":"integer"
+                },
+                "comments": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "comment_id": {
+                                "type": "integer"
+                            },
+                            "comment": {
+                                "type": "string"
+                            },
+                            "comments_count": {
+                                "type": "integer"
+                            },
+                            "up_votes": {
+                                "type": "integer"
+                            },
+                            "down_votes": {
+                                "type": "integer"
+                            },
+                            "multimedia_url": {
+                                "type": "string"
+                            },
+                            "multimedia_type": {
+                                "type": "string"
+                            },
+                            "user_id": {
+                                "type": "integer"
+                            },
+                            "username": {
+                                "type": "string"
+                            },
+                            "user_thumbnail_url": {
+                                "type": "string"
+                            },
+                            "created_on": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            },
+            "required": [
+                "entity_id",
+                "entity_type",
+                "comments"
+            ]
+        },
+        "GeneralError": {
+            "type": "object",
+            "properties": {
+                "error_code": {
+                    "type": "integer"
+                },
+                "error_remarks": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "externalDocs": {
+        "description": "Find out more about Swagger",
+        "url": "http://127.0.0.1:8000/api"
+    },
+    "host": "192.168.1.87:8003",
+    "info": {
+        "contact": {
+            "email": "tech@ibtspl.com"
+        },
+        "description": "This is a sample description",
+        "termsOfService": "http://ibtpsl.com",
+        "title": "Ib Service",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/save_comment/": {
+            "post": {
+                "security": [
+                    {
+                        "oauth": [
+                            "write"
+                        ]
+                    }
+                ],
+                "operationId": "save_comment",
+                "description": "Comment the entity",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "entity_id": {
+                                    "type": "integer"
+                                },
+                                "entity_type": {
+                                    "type": "string"
+                                },
+                                "comment": {
+                                    "type": "string"
+                                },
+                                "multimedia": {
+                                    "type": "string"
+                                },
+                                "multimedia_type": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "entity_id",
+                                "entity_type",
+                                "comment"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/responses/CommentResponse"
+                    }
+                }
+            }
+        },
+        "/delete_comment/": {
+            "post": {
+                "security": [
+                    {
+                        "oauth": [
+                            "write"
+                        ]
+                    }
+                ],
+                "operationId": "delete_comment",
+                "description": "Delete the comment",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "comment_id": {
+                                    "type": "integer"
+                                }
+                            },
+                            "required": [
+                                "comment_id"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 OK"
+                    }
+                }
+            }
+        },
+        "/get_comments/": {
+            "post": {
+                "security": [
+                    {
+                        "oauth": [
+                            "read"
+                        ]
+                    }
+                ],
+                "operationId": "get_comments",
+                "description": "Get the list of Comments",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "entity_id": {
+                                    "type": "integer"
+                                },
+                                "entity_type": {
+                                    "type": "string"
+                                },
+                                "offset": {
+                                    "type": "integer"
+                                },
+                                "limit": {
+                                    "type": "integer"
+                                },
+                                "search_q": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "entity_id",
+                                "entity_type",
+                                "offset",
+                                "limit"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/responses/CommentsResponse"
+                    },
+                    "400": {
+                        "$ref": "#/responses/GeneralError"
+                    }
+                }
+            }
+        },
+        "/vote_a_comment/": {
+            "post": {
+                "security": [
+                    {
+                        "oauth": [
+                            "write"
+                        ]
+                    }
+                ],
+                "operationId": "vote_a_comment",
+                "description": "Vote a comment either up or down",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "entity_id": {
+                                    "type": "integer"
+                                },
+                                "entity_type": {
+                                    "type": "string"
+                                },
+                                "comment_id": {
+                                    "type": "integer"
+                                },
+                                "vote": {
+                                    "type": "string",
+                                    "enum": [
+                                        "UP_VOTE",
+                                        "DOWN_VOTE",
+                                        "NEUTRAL"
+                                    ]
+                                }
+                            },
+                            "required": [
+                                "entity_id",
+                                "entity_type",
+                                "comment_id",
+                                "vote"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/responses/CommentResponse"
+                    },
+                    "400": {
+                        "$ref": "#/responses/GeneralError"
+                    }
+                }
+            }
+        },
+        "/report_comment/": {
+            "post": {
+                "security": [
+                    {
+                        "oauth": [
+                            "write"
+                        ]
+                    }
+                ],
+                "operationId": "report_comment",
+                "description": "Report the Comment",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "entity_id": {
+                                    "type": "integer"
+                                },
+                                "entity_type": {
+                                    "type": "string"
+                                },
+                                "comment_id": {
+                                    "type": "integer"
+                                }
+                            },
+                            "required": [
+                                "entity_id",
+                                "entity_type",
+                                "comment_id"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Comment object is successfully saved."
+                    },
+                    "400": {
+                        "$ref": "#/responses/GeneralError"
+                    }
+                }
+            }
+        },
+        "/get_count_of_comments/": {
+            "post": {
+                "security": [
+                    {
+                        "oauth": [
+                            "read"
+                        ]
+                    }
+                ],
+                "operationId": "get_count_of_comments",
+                "description": "Get the list of Comments",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "entity_id": {
+                                        "type": "integer"
+                                    },
+                                    "entity_type": {
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "entity_id",
+                                    "entity_type"
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Channel related information",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "entity_id": {
+                                        "type": "integer"
+                                    },
+                                    "entity_type": {
+                                        "type": "string"
+                                    },
+                                    "comments_count": {
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "schemes": [
+        "http"
+    ],
+    "securityDefinitions": {
+        "oauth": {
+            "tokenUrl": "http://auth.ibtspl.com/oauth2/",
+            "flow": "password",
+            "scopes": {
+                "read": "read users",
+                "write": "create users",
+                "update": "update users",
+                "delete": "delete users"
+            },
+            "type": "oauth2"
+        }
+    },
+    "swagger": "2.0",
+    "responses": {
+        "CommentResponse": {
+            "description": "Comment Response",
+            "schema": {
+                "$ref": "#/definitions/Comment"
+            }
+        },
+        "CommentsResponse": {
+            "description": "Comment Response",
+            "schema": {
+                "$ref": "#/definitions/ListOfComment"
+            }
+        },
+        "GeneralError": {
+            "description": "General Error",
+            "schema": {
+                "$ref": "#/definitions/GeneralError"
+            }
+        }
+    }
+}
+    

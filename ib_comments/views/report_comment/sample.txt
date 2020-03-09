@@ -1,0 +1,15 @@
+
+
+REQUEST_BODY_JSON = """
+{
+    "entity_id": 1, 
+    "comment_id": 1, 
+    "entity_type": "string"
+}
+"""
+
+
+RESPONSE_400_JSON = """
+{"error_code": 1, "error_remarks": "string"}
+"""
+

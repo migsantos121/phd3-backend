@@ -1,0 +1,13 @@
+
+
+REQUEST_BODY_JSON = """
+{
+    "username": "string"
+}
+"""
+
+
+RESPONSE_200_JSON = """
+{"res_status": "AVAILABLE"}
+"""
+
