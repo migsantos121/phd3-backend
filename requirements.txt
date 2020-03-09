@@ -71,7 +71,7 @@ swagger-parser==0.1.7
 swagger-spec-validator==2.0.2
 twython==3.4.0
 Unidecode==0.4.21
-urllib3==1.22
+urllib3==1.24.2
 websocket-client==0.44.0
 whichcraft==0.4.1
 wrapt==1.10.11
