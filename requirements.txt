@@ -59,7 +59,7 @@ python-dateutil==2.6.1
 pytz==2017.3
 PyYAML==3.11
 raven==6.4.0
-requests==2.18.4
+requests==2.20.0
 requests-kerberos==0.11.0
 requests-oauthlib==0.8.0
 requests-toolbelt==0.8.0
