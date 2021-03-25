@@ -57,7 +57,7 @@ pykerberos==1.1.14
 pytest==3.3.1
 python-dateutil==2.6.1
 pytz==2017.3
-PyYAML==3.11
+PyYAML==5.4
 raven==6.4.0
 requests==2.18.4
 requests-kerberos==0.11.0
