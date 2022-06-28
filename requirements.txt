@@ -1,5 +1,5 @@
 analytics-python==1.2.9
-arrow==0.12.0
+arrow==0.15.1
 astroid==1.5.3
 attrs==17.3.0
 backports.functools-lru-cache==1.2.1
